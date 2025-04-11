@@ -1,19 +1,24 @@
 
 import { useEffect, useState } from "react";
 import { MainLayout } from "@/components/layout/MainLayout";
-import { PetCard } from "@/components/ui/pet-card";
-import { PetAvatar } from "@/components/avatars/PetAvatar";
+import { ParentAvatar3D } from "@/components/avatars/ParentAvatar3D";
+import { PetAvatar3D } from "@/components/ui/pet-avatar-3d";
+import { ParentProfileCard } from "@/components/ui/parent-profile-card";
+import { SimplifiedPetCard } from "@/components/ui/simplified-pet-card";
+import { JournalSection } from "@/components/ui/journal-section";
 
-// Mock data for pet cards
+// Mock data for pets - matching the image
 const mockPets = [
-  { id: 1, name: "Kitty", type: "Persian Cat", age: 2, petType: "cat", gender: "female" },
-  { id: 2, name: "Max", type: "Golden Retriever", age: 4, petType: "dog", gender: "male" },
-  { id: 3, name: "Luna", type: "Siamese Cat", age: 1, petType: "cat", gender: "female" },
+  { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "cat" },
+  { id: 2, name: "Oreo", gender: "Male", age: 1, petType: "dog" },
+  { id: 3, name: "Chia", gender: "Female", age: 2, petType: "cat" },
+  { id: 4, name: "Kunyit", gender: "Female", age: 4, petType: "dog" },
+  { id: 5, name: "Pepper", gender: "Male", age: 2, petType: "dog" },
 ];
 
 const Home = () => {
   const [greeting, setGreeting] = useState("Good morning");
-  const [parentName, setParentName] = useState("Kev");
+  const [parentName, setParentName] = useState("Eko");
 
   // Set greeting based on time of day
   useEffect(() => {
@@ -30,29 +35,46 @@ const Home = () => {
   return (
     <MainLayout>
       <div className="p-6">
-        <header className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-800">PET FAMILY</h1>
-          <p className="text-sm text-gray-500">Meet your furry companions</p>
-          <p className="text-xl font-medium mt-4">{greeting}, {parentName}!</p>
+        <header className="mb-8">
+          <h1 className="text-5xl font-bold text-gray-900">PET FAMILY</h1>
+          <p className="text-lg text-gray-400">Your pet family information</p>
         </header>
 
-        <div className="grid grid-cols-1 gap-4">
-          {mockPets.map((pet) => (
-            <PetCard
+        <p className="text-3xl font-medium mb-8">{greeting}, {parentName}!</p>
+
+        {/* Parent Profile Card */}
+        <ParentProfileCard
+          name={parentName}
+          avatar={
+            <ParentAvatar3D gender="boy" size="xl" />
+          }
+          petCount={mockPets.length}
+          className="mb-12"
+        />
+
+        {/* Pets Section */}
+        <h2 className="text-3xl font-bold mb-7">Hello, Kids!</h2>
+        <div className="grid grid-cols-2 gap-5 mb-12">
+          {/* Only showing first two pets as in the image */}
+          {mockPets.slice(0, 2).map((pet) => (
+            <SimplifiedPetCard
               key={pet.id}
               name={pet.name}
-              type={pet.type}
+              gender={pet.gender}
               age={pet.age}
-              avatar={
-                <PetAvatar 
+              image={
+                <PetAvatar3D 
                   petType={pet.petType as "cat" | "dog"} 
-                  gender={pet.gender as "male" | "female"} 
-                  size="lg" 
+                  gender={pet.gender === "Male" ? "male" : "female"} 
+                  size="xl" 
                 />
               }
             />
           ))}
         </div>
+
+        {/* Journal Section */}
+        <JournalSection />
       </div>
     </MainLayout>
   );
