@@ -18,6 +18,7 @@ import PetCreated from "./pages/onboarding/PetCreated";
 import Home from "./pages/Home";
 import PetCare from "./pages/PetCare";
 import AddRecord from "./pages/AddRecord";
+import Journal from "./pages/Journal";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/pet-care" element={<PetCare />} />
           <Route path="/add-record" element={<AddRecord />} />
+          <Route path="/journal" element={<Journal />} />
           
           {/* Catch-all Route */}
           <Route path="*" element={<NotFound />} />
