@@ -17,6 +17,9 @@ export default {
 				'2xl': '1400px'
 			}
 		},
+		fontFamily: {
+			sans: ['Varela Round', 'system-ui', 'sans-serif'],
+		},
 		extend: {
 			colors: {
 				border: 'hsl(var(--border))',
@@ -27,6 +30,13 @@ export default {
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
+				},
+				petapp: {
+					green: '#BCD6D0',
+					pink: '#FCE6E9',
+					peach: '#FDF5EB',
+					white: '#FFFFFF',
+					inactive: '#9BBDB7',
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
