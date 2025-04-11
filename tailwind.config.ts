@@ -37,6 +37,7 @@ export default {
 					peach: '#FDF5EB',
 					white: '#FFFFFF',
 					inactive: '#9BBDB7',
+					mint: '#BFE6E0',
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
