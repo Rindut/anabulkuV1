@@ -28,16 +28,16 @@ export const Parent3DAvatar = ({
   return (
     <div className={cn(
       sizeClasses[size],
-      "flex items-center justify-center relative",
-      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]", // Removed scale
+      "flex items-end justify-center relative", // Change to items-end to align bottom
+      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]",
       className
     )}>
       <img 
         src={avatarSrc} 
         alt={`${gender} Parent Avatar`}
         className={cn(
-          "w-full object-contain",
-          floating && "absolute bottom-0 h-[130%]" // Position the image from bottom, make it taller to show only head outside
+          "w-full object-cover object-bottom", // Change to object-cover and object-bottom
+          floating && "absolute bottom-0 h-[130%]" // Keep head extending outside
         )}
         onError={(e) => {
           e.currentTarget.onerror = null;
