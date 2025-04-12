@@ -36,11 +36,11 @@ const Home = () => {
       <StatusBar />
       <div className="px-5 py-3 bg-petapp-white min-h-screen">
         <header className="mb-4">
-          <h1 className="text-3xl font-bold text-petapp-text-strong tracking-tight">PET FAMILY</h1>
-          <p className="text-xs text-petapp-text-neutral">Your pet family information</p>
+          <h1 className="text-[36px] font-bold text-black font-rubik">PET FAMILY</h1>
+              <p className="text-[15px] text-gray-500 font-rubik">Your pet family information</p>
         </header>
 
-        <p className="text-lg font-semibold mb-3 font-poppins">{greeting}, {parentName}!</p>
+        <p className="text-[15px] font-bold text-black font-poppins">{greeting}, {parentName}!</p>
 
         {/* Parent Profile Card */}
         <ParentInfoCard
@@ -51,7 +51,7 @@ const Home = () => {
         />
 
         {/* Pets Section */}
-        <h2 className="text-xl font-bold mb-3">Hello, Kids!</h2>
+        <h2 className="text-[15px] font-bold text-black font-poppins mb-3">Hello, Kids!</h2>
         
         {/* Horizontal scrollable pet list */}
         <HorizontalPetList 

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,6 +21,7 @@ export default {
 		fontFamily: {
 			sans: ['Poppins', 'system-ui', 'sans-serif'],
 			poppins: ['Poppins', 'sans-serif'],
+			rubik: ['Rubik', 'sans-serif'],
 		},
 		extend: {
 			colors: {

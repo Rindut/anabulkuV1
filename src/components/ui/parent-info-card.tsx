@@ -26,8 +26,8 @@ export const ParentInfoCard = ({
       {avatar}
       
       <div className="ml-3 flex-1">
-        <div className="text-petapp-text-neutral text-xs font-medium">Pawrent's Name</div>
-        <div className="text-xl font-semibold text-petapp-text-strong mb-2">{name}</div>
+        <div className="text-black text-[10px] font-poppins">Pawrent's Name</div>
+            <div className="text-[15px] font-poppins text-black mb-2">{name}</div>
         
         <div className="text-petapp-text-neutral text-xs font-medium">Number of Pets</div>
         <div className="text-xl font-semibold text-petapp-text-strong">{petCount}</div>
