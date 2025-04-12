@@ -5,12 +5,14 @@ interface Parent3DAvatarProps {
   size?: "sm" | "md" | "lg";
   className?: string;
   gender?: "Male" | "Female";
+  floating?: boolean;
 }
 
 export const Parent3DAvatar = ({
   size = "md",
   className,
-  gender = "Male"
+  gender = "Male",
+  floating = false
 }: Parent3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-16 w-16",
@@ -27,6 +29,7 @@ export const Parent3DAvatar = ({
     <div className={cn(
       sizeClasses[size],
       "flex items-center justify-center",
+      floating && "drop-shadow-[0_6px_10px_rgba(0,0,0,0.2)] scale-110", // Enhanced shadow and slightly larger when floating
       className
     )}>
       <img 
