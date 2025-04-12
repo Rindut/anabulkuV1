@@ -16,7 +16,7 @@ export const Parent3DAvatar = ({
 }: Parent3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-16 w-16",
-    md: "h-28 w-28",  // Increased size to make hair extend outside
+    md: "h-[8.5rem] w-[8.5rem]",  // Increased size to make more hair extend outside
     lg: "h-32 w-32",
   };
 
