@@ -66,8 +66,8 @@ const PetCare = () => {
     <MainLayout>
       <div className="p-6">
         <header className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-900">PET CARE</h1>
-          <p className="text-lg text-gray-500">History of your pet care</p>
+          <h1 className="text-[36px] font-bold text-black font-rubik">PET CARE</h1>
+          <p className="text-[15px] text-gray-500 font-rubik">History of your pet care</p>
         </header>
 
         {/* Filter tabs */}
@@ -75,10 +75,10 @@ const PetCare = () => {
           {filterOptions.map((petName) => (
             <button
               key={petName}
-              className={`px-6 py-2.5 rounded-3xl text-base font-medium whitespace-nowrap ${
+              className={`px-6 py-2.5 rounded-3xl text-[12px] font-poppins whitespace-nowrap ${
                 activeFilter === petName
-                  ? "bg-amber-200 text-gray-800 border border-amber-300"
-                  : "bg-white text-gray-800 border border-amber-200"
+                  ? "bg-amber-200 text-black border border-amber-300"
+                  : "bg-white text-black border border-amber-200"
               }`}
               onClick={() => setActiveFilter(petName)}
             >
@@ -92,7 +92,7 @@ const PetCare = () => {
           {filteredActivities.length > 0 ? (
             filteredActivities.map((dateGroup) => (
               <div key={dateGroup.id} className="space-y-1">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">{dateGroup.date}</h2>
+                <h2 className="text-[15px] font-poppins text-black mb-4">{dateGroup.date}</h2>
                 
                 <div className="bg-petapp-mint rounded-3xl p-5 space-y-6">
                   {dateGroup.activities.map((activity) => (
@@ -103,7 +103,7 @@ const PetCare = () => {
                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4 shadow-sm">
                         <Check className="w-6 h-6 text-amber-400" />
                       </div>
-                      <span className="text-xl font-medium text-gray-700">
+                      <span className="text-[12px] font-poppins text-black">
                         [{activity.petName}] {activity.type}
                       </span>
                     </div>
