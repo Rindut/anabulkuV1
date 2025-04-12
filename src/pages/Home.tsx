@@ -58,7 +58,7 @@ const Home = () => {
         {/* Pets Section */}
         <h2 className="text-[15px] font-bold text-black font-poppins mb-3 mt-12">Hello, Kids!</h2>
         
-        {/* Horizontal scrollable pet list - swipe to see more */}
+        {/* Horizontal scrollable pet list */}
         <HorizontalPetList 
           pets={mockPets}
           renderPetImage={(pet) => {
