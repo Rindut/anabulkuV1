@@ -1,5 +1,5 @@
 
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface ParentInfoCardProps {
@@ -25,9 +25,7 @@ export const ParentInfoCard = ({
     >
       {/* Avatar Container with larger size to extend outside */}
       <div className="z-[1] mr-6 -mt-8 -ml-1 flex items-end">
-        {React.cloneElement(avatar as React.ReactElement, {
-      className: "pawrent-avatar"
-    })}
+        {avatar}
       </div>
       
       <div className="flex-1 flex flex-col"> {/* Removed extra left margin and top margin */}

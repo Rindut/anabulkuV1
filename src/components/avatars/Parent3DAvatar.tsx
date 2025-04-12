@@ -30,7 +30,6 @@ export const Parent3DAvatar = ({
       sizeClasses[size],
       "flex items-end justify-center relative", 
       floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]",
-      "pawrent-avatar",
       className
     )}>
       <img 

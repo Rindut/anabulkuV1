@@ -43,18 +43,18 @@ const Home = () => {
           <p className="text-[15px] text-gray-500 font-rubik">Your pet family information</p>
         </header>
 
-        <p className="text-[15px] font-bold text-black font-poppins mb-5">{greeting}, {parentName}!</p>
+        <p className="text-[15px] font-bold text-black font-poppins mb-10">{greeting}, {parentName}!</p>
 
         {/* Parent Profile Card */}
         <ParentInfoCard
           name={parentName}
           avatar={<Parent3DAvatar size="md" gender={parentGender} floating={true} />}
           petCount={mockPets.length}
-          className="mb-3"
+          className="mb-5"
         />
 
         {/* Pets Section */}
-        <h2 className="text-[15px] font-bold text-black font-poppins mb-4 mt-16">Hello, Kids!</h2>
+        <h2 className="text-[15px] font-bold text-black font-poppins mb-6 mt-16">Hello, Kids!</h2>
         
         {/* Horizontal scrollable pet list */}
         <HorizontalPetList 
