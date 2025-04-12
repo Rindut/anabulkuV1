@@ -27,7 +27,7 @@ export const PetCardHorizontal = ({
         "bg-petapp-petBox rounded-[20px] p-5 pb-4 pt-14 shadow-md min-w-[140px] flex-shrink-0",
         "flex flex-col items-center justify-between h-full",
         "cursor-pointer transition-all hover:scale-105 hover:shadow-lg",
-        "relative mt-10", // Added top margin to make room for the floating avatar
+        "relative mt-12", // Increased top margin for better float visibility
         className
       )}
       onClick={onClick}

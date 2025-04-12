@@ -43,7 +43,7 @@ export const Pet3DAvatar = ({
         )}
         style={{ 
           objectPosition: 'bottom',
-          transform: floating ? 'translateY(-25px)' : undefined // Move avatar up more for floating effect
+          transform: floating ? 'translateY(-30px)' : undefined // Increased floating height for better visibility
         }}
         onError={(e) => {
           e.currentTarget.onerror = null;
