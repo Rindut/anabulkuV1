@@ -15,10 +15,10 @@ export const Pet3DAvatar = ({
   floating = false
 }: Pet3DAvatarProps) => {
   const sizeClasses = {
-    sm: "h-16 w-16",
-    md: "h-24 w-24",
-    lg: "h-32 w-32",
-    xl: "h-40 w-40", // Reduced overall pet avatar sizes
+    sm: "h-20 w-20",
+    md: "h-32 w-32",
+    lg: "h-40 w-40",
+    xl: "h-48 w-48", // Added extra large size
   };
 
   // Use the appropriate avatar based on pet type
