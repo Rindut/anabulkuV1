@@ -49,7 +49,7 @@ export const HorizontalPetList = ({
     // This empty handler enables momentum scrolling on iOS Safari
   };
   return (
-    <div className="pt-16 pb-4 -mx-5 px-5 mb-8 relative">
+    <div className="pt-20 pb-4 -mx-5 px-5 mb-8 relative">
       {/* Visual indicator that there's more to scroll */}
       {showScrollIndicator && (
         <div className="absolute right-4 top-1/2 w-8 h-8 bg-white/60 rounded-full flex items-center justify-center shadow-sm z-10 animate-pulse">

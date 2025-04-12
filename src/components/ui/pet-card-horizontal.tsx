@@ -33,7 +33,7 @@ export const PetCardHorizontal = ({
       onClick={onClick}
     >
       {/* Avatar Container - Positioned absolutely to float above the card */}
-      <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 z-10">
         {image}
       </div>
       
