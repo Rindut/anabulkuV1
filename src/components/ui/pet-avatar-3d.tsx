@@ -21,8 +21,11 @@ export const PetAvatar3D = ({
     xl: "h-28 w-28"
   };
 
+  // Normalize petType to lowercase for consistent comparison
+  const normalizedPetType = petType.toLowerCase() as "cat" | "dog";
+
   // Use the appropriate avatar based on pet type only (as specified in requirements)
-  const avatarSrc = petType === "cat"
+  const avatarSrc = normalizedPetType === "cat"
     ? "/lovable-uploads/avatar_pet_cat.png"
     : "/lovable-uploads/avatar_pet_dog.png";
     
@@ -30,7 +33,7 @@ export const PetAvatar3D = ({
   const mappedGender = gender === "male" ? "Male" : "Female";
   
   // Fallback images if new assets aren't uploaded yet
-  const fallbackSrc = petType === "cat"
+  const fallbackSrc = normalizedPetType === "cat"
     ? (mappedGender === "Female" 
         ? "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png"
         : "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png")
@@ -46,7 +49,7 @@ export const PetAvatar3D = ({
     )}>
       <img 
         src={avatarSrc} 
-        alt={`${petType} avatar`}
+        alt={`${normalizedPetType} avatar`}
         className="w-full h-full object-cover"
         loading="lazy"
         onError={(e) => {

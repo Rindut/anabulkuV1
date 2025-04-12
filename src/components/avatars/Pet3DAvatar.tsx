@@ -23,13 +23,16 @@ export const Pet3DAvatar = ({
     xl: "h-48 w-48",
   };
 
+  // Normalize petType to lowercase for consistent comparison
+  const normalizedPetType = petType.toLowerCase() as "cat" | "dog";
+
   // Use the appropriate avatar based on pet type only (as specified in requirements)
-  const avatarSrc = petType === "cat"
+  const avatarSrc = normalizedPetType === "cat"
     ? "/lovable-uploads/avatar_pet_cat.png"  // Cat avatar - new asset
     : "/lovable-uploads/avatar_pet_dog.png"; // Dog avatar - new asset
     
   // Fallback images if new assets aren't uploaded yet
-  const fallbackSrc = petType === "cat"
+  const fallbackSrc = normalizedPetType === "cat"
     ? (gender === "Female" 
         ? "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png"  // Female cat
         : "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png") // Male cat
@@ -46,7 +49,7 @@ export const Pet3DAvatar = ({
     )}>
       <img 
         src={avatarSrc} 
-        alt={`${petType} avatar`}
+        alt={`${normalizedPetType} avatar`}
         className={cn(
           "w-full object-cover object-bottom",
           floating && "absolute bottom-0 h-[160%] drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] z-10",
