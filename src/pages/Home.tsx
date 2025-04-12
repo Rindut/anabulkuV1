@@ -13,7 +13,7 @@ import { JournalSection } from "@/components/ui/journal-section";
 // Mock data for pets - matching the example case
 // Ensure consistent casing for petType to avoid issues
 const mockPets = [
-  { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "dog" },
+  { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "cat" },
   { id: 2, name: "Oreo", gender: "Male", age: 1, petType: "dog" },
   { id: 3, name: "Chia", gender: "Female", age: 2, petType: "dog" },
   { id: 4, name: "Kunyit", gender: "Female", age: 1, petType: "cat" },
