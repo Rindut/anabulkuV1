@@ -28,7 +28,7 @@ export const ParentInfoCard = ({
         {avatar}
       </div>
       
-      <div className="ml-24 flex-1 pt-2 flex flex-col"> {/* 16px gap (ml-24 instead of ml-28) */}
+      <div className="ml-24 flex-1 flex flex-col mt-2"> {/* Added small top margin for perfect alignment with avatar */}
         <div className="text-black text-[12px] font-poppins">Pawrent's Name</div>
         <div className="text-[15px] font-poppins text-black mb-2">{name}</div>
         

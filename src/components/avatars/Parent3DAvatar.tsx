@@ -29,7 +29,7 @@ export const Parent3DAvatar = ({
     <div className={cn(
       sizeClasses[size],
       "flex items-center justify-center",
-      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] scale-110 bg-white/30 rounded-full backdrop-blur-sm", // Enhanced shadow and slightly larger when floating with subtle glow
+      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] scale-110", // Enhanced shadow and slightly larger when floating
       className
     )}>
       <img 
