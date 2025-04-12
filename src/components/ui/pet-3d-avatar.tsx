@@ -16,7 +16,7 @@ export const Pet3DAvatar = ({
 }: Pet3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-20 w-20",
-    md: "h-32 w-32",
+    md: "h-24 w-24", // Reduced container size to make head extend more
     lg: "h-40 w-40",
   };
 
@@ -29,7 +29,7 @@ export const Pet3DAvatar = ({
     <div className={cn(
       sizeClasses[size],
       "flex items-end justify-center relative",
-      floating && "relative z-10", // Added z-index to make avatar appear above card
+      floating && "absolute top-[-40px] left-1/2 transform -translate-x-1/2 z-20", // Positioning to make head extend above box
       className
     )}>
       <img 
@@ -37,12 +37,12 @@ export const Pet3DAvatar = ({
         alt={`${petType} avatar`}
         className={cn(
           "w-full object-cover object-bottom",
-          floating && "absolute bottom-0 h-[150%] drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] z-10", // Enhanced shadow for floating effect
-          !floating && "h-[150%]"
+          floating && "absolute bottom-0 h-[200%] drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] z-10", // Increased height to 200% to make head extend more
+          !floating && "h-[200%]" // Also increased for non-floating
         )}
         style={{ 
           objectPosition: 'bottom',
-          transform: floating ? 'translateY(-20px)' : undefined // Move avatar up slightly for floating effect
+          transform: floating ? 'translateY(-35px)' : undefined // Moved avatar up more to make head extend further
         }}
         onError={(e) => {
           e.currentTarget.onerror = null;
