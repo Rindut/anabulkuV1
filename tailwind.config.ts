@@ -35,14 +35,14 @@ export default {
 					foreground: 'hsl(var(--primary-foreground))'
 				},
 				petapp: {
-					green: '#A8CBB7',
+					green: '#6B9C8F',
+					orange: '#F7931E', 
+					mint: '#E8F4F0', // Soft mint background
 					pink: '#FCE6E9',
 					peach: '#FDF9F4',
 					white: '#F8F9F8',
 					inactive: '#9BBDB7',
-					mint: '#BFE6E0',
 					beige: '#FBEEDC',
-					orange: '#F9AD6A',
 					teal: '#43978D',
 					pawrentBox: '#C5E6E2',
 					petBox: '#FFDEC1',
