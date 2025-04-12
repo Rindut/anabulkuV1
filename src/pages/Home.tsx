@@ -35,7 +35,6 @@ const Home = () => {
 
   return (
     <MainLayout>
-      <StatusBar />
       <div className="px-5 py-3 bg-petapp-white min-h-screen">
         <header className="mb-4">
           <h1 className="text-[36px] font-bold text-black font-rubik">PET FAMILY</h1>

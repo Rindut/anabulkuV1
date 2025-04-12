@@ -1,8 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { MainLayout } from "@/components/layout/MainLayout";
-import { ButtonCustom } from "@/components/ui/button-custom";
-import { useNavigate } from "react-router-dom";
 import { Moon, Star, Rainbow, RefreshCw, Calendar } from "lucide-react";
 import { format } from "date-fns";
 import { 
@@ -23,7 +21,6 @@ const mockPets = [
 ];
 
 const Journal = () => {
-  const navigate = useNavigate();
   const [selectedPetName, setSelectedPetName] = useState("Chia");
   const [journalEntries, setJournalEntries] = useState<JournalEntry[]>([]);
   const [lastRefreshed, setLastRefreshed] = useState<string>("");
@@ -93,15 +90,15 @@ const Journal = () => {
 
   return (
     <MainLayout>
-      <div className="p-6 pb-24">
+      <div className="p-6">
         {/* Header */}
         <header className="mb-5">
-          <h1 className="text-5xl font-bold text-gray-900">PET JOURNAL</h1>
+          <h1 className="text-[36px] font-bold text-black font-rubik">PET JOURNAL</h1>
           <div className="flex items-center justify-between">
-            <p className="text-xl text-gray-400">Track your pets' pawtivities</p>
+            <p className="text-[15px] text-gray-500 font-rubik">Track your pets' pawtivities</p>
             
             {/* Last refreshed info */}
-            <div className="flex items-center text-sm text-gray-500">
+            <div className="flex items-center text-[10px] text-gray-500 font-rubik">
               <Calendar className="h-4 w-4 mr-1" />
               <span>
                 Updated: {lastRefreshed ? format(new Date(lastRefreshed), 'MMM d, yyyy') : 'Just now'}
@@ -124,10 +121,10 @@ const Journal = () => {
             <button
               key={pet.id}
               onClick={() => setSelectedPetName(pet.name)}
-              className={`py-3 px-8 rounded-full border whitespace-nowrap transition-colors ${
+              className={`py-3 px-8 rounded-full border whitespace-nowrap transition-colors font-poppins text-[12px] ${
                 selectedPetName === pet.name
-                  ? "bg-amber-200 border-amber-300 text-gray-800 font-medium"
-                  : "bg-white border-petapp-pink text-gray-800"
+                  ? "bg-amber-200 border-amber-300 text-black font-medium"
+                  : "bg-white border-petapp-pink text-black"
               }`}
             >
               {pet.name}
@@ -142,9 +139,9 @@ const Journal = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Moon className="text-blue-500" size={24} />
-                <h2 className="text-2xl font-bold">Sleeping Style Prediction</h2>
+                <h2 className="text-[15px] font-poppins text-black font-bold">Sleeping Style Prediction</h2>
               </div>
-              <p className="text-gray-800 text-lg leading-relaxed">
+              <p className="text-black text-[12px] font-poppins leading-relaxed">
                 "{currentJournal.sleepingStyle}"
               </p>
             </div>
@@ -153,9 +150,9 @@ const Journal = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Star className="text-yellow-400" size={24} />
-                <h2 className="text-2xl font-bold">Today's Activity Highlight</h2>
+                <h2 className="text-[15px] font-poppins text-black font-bold">Today's Activity Highlight</h2>
               </div>
-              <p className="text-gray-800 text-lg leading-relaxed">
+              <p className="text-black text-[12px] font-poppins leading-relaxed">
                 "{currentJournal.activityHighlight}"
               </p>
             </div>
@@ -164,12 +161,12 @@ const Journal = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Rainbow className="text-red-400" size={24} />
-                <h2 className="text-2xl font-bold">Mood of the Day</h2>
+                <h2 className="text-[15px] font-poppins text-black font-bold">Mood of the Day</h2>
               </div>
-              <p className="text-gray-800 text-lg font-medium">
+              <p className="text-black text-[12px] font-poppins font-medium">
                 "{currentJournal.moodOfTheDay.mood}"
               </p>
-              <p className="text-gray-800 text-lg leading-relaxed">
+              <p className="text-black text-[12px] font-poppins leading-relaxed">
                 "{currentJournal.moodOfTheDay.description}"
               </p>
             </div>
@@ -180,18 +177,7 @@ const Journal = () => {
           </div>
         )}
 
-        {/* Back to Home Button */}
-        <div className="mt-12">
-          <ButtonCustom 
-            variant="primary"
-            size="lg"
-            fullWidth
-            className="bg-petapp-mint text-white font-medium py-4 text-xl rounded-xl"
-            onClick={() => navigate('/')}
-          >
-            Back to Home
-          </ButtonCustom>
-        </div>
+        {/* No back to home button as requested */}
       </div>
     </MainLayout>
   );
