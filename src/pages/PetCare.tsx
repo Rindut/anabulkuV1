@@ -104,7 +104,7 @@ const PetCare = () => {
               <div key={dateGroup.id} className="space-y-1">
                 <h2 className="text-[15px] font-poppins text-black mb-4">{dateGroup.date}</h2>
                 
-                <div className="bg-petapp-mint rounded-3xl p-5 space-y-6">
+                <div className="bg-petapp-pawrentBox rounded-3xl p-5 space-y-6">
                   {dateGroup.activities.map((activity) => (
                     <div 
                       key={activity.id} 

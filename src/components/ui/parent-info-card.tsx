@@ -18,7 +18,7 @@ export const ParentInfoCard = ({
   return (
     <div 
       className={cn(
-        "bg-[#D9EBE7]/60 rounded-xl p-3 flex items-start relative overflow-visible",
+        "bg-petapp-pawrentBox/60 rounded-xl p-3 flex items-start relative overflow-visible",
         "shadow-sm", // Added overflow-visible to allow elements to extend outside
         className
       )}

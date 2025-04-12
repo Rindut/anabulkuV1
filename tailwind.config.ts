@@ -44,6 +44,8 @@ export default {
 					beige: '#FBEEDC',
 					orange: '#F9AD6A',
 					teal: '#43978D',
+					pawrentBox: '#C5E6E2',
+					petBox: '#FFDEC1',
 					text: {
 						neutral: '#5C5C5C',
 						strong: '#333333',
