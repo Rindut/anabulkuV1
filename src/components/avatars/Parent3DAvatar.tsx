@@ -28,14 +28,17 @@ export const Parent3DAvatar = ({
   return (
     <div className={cn(
       sizeClasses[size],
-      "flex items-center justify-center",
-      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] scale-125", // Increased scale to make hair extend outside
+      "flex items-center justify-center relative",
+      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]", // Removed scale
       className
     )}>
       <img 
         src={avatarSrc} 
         alt={`${gender} Parent Avatar`}
-        className="h-full w-full object-contain"
+        className={cn(
+          "w-full object-contain",
+          floating && "absolute bottom-0 h-[130%]" // Position the image from bottom, make it taller to show only head outside
+        )}
         onError={(e) => {
           e.currentTarget.onerror = null;
           e.currentTarget.nextSibling!.textContent = "Avatar not available";
