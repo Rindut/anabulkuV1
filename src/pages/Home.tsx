@@ -17,6 +17,7 @@ const mockPets = [
   { id: 2, name: "Oreo", gender: "Male", age: 1, petType: "dog" },
   { id: 3, name: "Chia", gender: "Female", age: 2, petType: "dog" },
   { id: 4, name: "Kunyit", gender: "Female", age: 1, petType: "cat" },
+  { id: 5, name: "Poshy", gender: "Male", age: 4, petType: "cat" },
 ];
 
 const Home = () => {
