@@ -27,6 +27,7 @@ export const BottomNavigation = () => {
               key={item.path} 
               to={item.path} 
               className="flex flex-col items-center px-2"
+              onClick={() => window.scrollTo(0, 0)}
             >
               <div className={`h-5 w-5 flex items-center justify-center ${active ? "bg-white/20 rounded-full p-2" : ""}`}>
                 <item.icon 

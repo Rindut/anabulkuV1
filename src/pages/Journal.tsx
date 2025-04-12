@@ -94,24 +94,8 @@ const Journal = () => {
         {/* Header */}
         <header className="mb-5">
           <h1 className="text-[36px] font-bold text-black font-rubik">PET JOURNAL</h1>
-          <div className="flex items-center justify-between">
+          <div>
             <p className="text-[15px] text-gray-500 font-rubik">Track your pets' pawtivities</p>
-            
-            {/* Last refreshed info */}
-            <div className="flex items-center text-[10px] text-gray-500 font-rubik">
-              <Calendar className="h-4 w-4 mr-1" />
-              <span>
-                Updated: {lastRefreshed ? format(new Date(lastRefreshed), 'MMM d, yyyy') : 'Just now'}
-              </span>
-              <button 
-                onClick={handleManualRefresh}
-                disabled={isRefreshing}
-                className="ml-2 p-1 rounded-full hover:bg-gray-100 disabled:opacity-50"
-                title="Refresh journal"
-              >
-                <RefreshCw className={`h-4 w-4 text-gray-500 ${isRefreshing ? 'animate-spin' : ''}`} />
-              </button>
-            </div>
           </div>
         </header>
 
@@ -177,7 +161,23 @@ const Journal = () => {
           </div>
         )}
 
-        {/* No back to home button as requested */}
+        {/* Last updated info at the bottom */}
+        <div className="mt-16 pt-4 border-t border-gray-100 flex items-center justify-center text-[10px] text-gray-500 font-rubik">
+          <div className="flex items-center">
+            <Calendar className="h-4 w-4 mr-1" />
+            <span>
+              Updated: {lastRefreshed ? format(new Date(lastRefreshed), 'MMM d, yyyy') : 'Just now'}
+            </span>
+            <button 
+              onClick={handleManualRefresh}
+              disabled={isRefreshing}
+              className="ml-2 p-1 rounded-full hover:bg-gray-100 disabled:opacity-50"
+              title="Refresh journal"
+            >
+              <RefreshCw className={`h-4 w-4 text-gray-500 ${isRefreshing ? 'animate-spin' : ''}`} />
+            </button>
+          </div>
+        </div>
       </div>
     </MainLayout>
   );
