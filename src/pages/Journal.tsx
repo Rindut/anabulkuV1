@@ -123,8 +123,8 @@ const Journal = () => {
               onClick={() => setSelectedPetName(pet.name)}
               className={`py-3 px-8 rounded-full border whitespace-nowrap transition-colors font-poppins text-[12px] ${
                 selectedPetName === pet.name
-                  ? "bg-amber-200 border-amber-300 text-black font-medium"
-                  : "bg-white border-petapp-pink text-black"
+                  ? "bg-petapp-orange border-petapp-orange/70 text-black font-medium"
+                  : "bg-white border-petapp-orange/30 text-black"
               }`}
             >
               {pet.name}

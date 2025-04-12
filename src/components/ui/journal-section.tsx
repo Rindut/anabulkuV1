@@ -15,7 +15,7 @@ export const JournalSection = () => {
       <div className="flex justify-center mb-16">
         <button 
           onClick={() => navigate('/journal')}
-          className="bg-petapp-beige text-black font-poppins font-bold text-[12px] py-4 px-8 rounded-full shadow-sm hover:shadow-md transition-shadow"
+          className="bg-petapp-orange text-black font-poppins font-bold text-[12px] py-4 px-8 rounded-full shadow-sm hover:shadow-md transition-shadow"
         >
           Go to Pets Journal
         </button>

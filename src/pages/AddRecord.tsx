@@ -61,8 +61,8 @@ const AddRecord = () => {
                 onClick={() => setSelectedPet(pet.name)}
                 className={`py-3 px-6 rounded-full border whitespace-nowrap font-poppins text-[12px] ${
                   selectedPet === pet.name
-                    ? "bg-amber-200 border-amber-300 text-black"
-                    : "bg-white border-petapp-pink text-black"
+                    ? "bg-petapp-orange border-petapp-orange/70 text-black"
+                    : "bg-white border-petapp-orange/30 text-black"
                 }`}
               >
                 {pet.name}

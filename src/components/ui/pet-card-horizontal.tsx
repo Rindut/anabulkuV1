@@ -24,7 +24,7 @@ export const PetCardHorizontal = ({
   return (
     <div 
       className={cn(
-        "bg-petapp-peach rounded-2xl p-4 shadow-sm min-w-[130px] flex-shrink-0",
+        "bg-petapp-orange rounded-2xl p-4 shadow-sm min-w-[130px] flex-shrink-0",
         "flex flex-col items-center justify-between h-full",
         "cursor-pointer transition-transform hover:scale-105",
         className

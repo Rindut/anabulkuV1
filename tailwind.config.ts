@@ -42,6 +42,7 @@ export default {
 					inactive: '#9BBDB7',
 					mint: '#BFE6E0',
 					beige: '#FBEEDC',
+					orange: '#F9AD6A',
 					text: {
 						neutral: '#5C5C5C',
 						strong: '#333333',

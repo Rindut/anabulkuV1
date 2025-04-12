@@ -87,8 +87,8 @@ const PetCare = () => {
               key={petName}
               className={`px-6 py-2.5 rounded-3xl text-[12px] font-poppins whitespace-nowrap ${
                 activeFilter === petName
-                  ? "bg-amber-200 text-black border border-amber-300"
-                  : "bg-white text-black border border-amber-200"
+                  ? "bg-petapp-orange text-black border border-petapp-orange/70"
+                  : "bg-white text-black border border-petapp-orange/30"
               }`}
               onClick={() => setActiveFilter(petName)}
             >
