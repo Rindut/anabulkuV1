@@ -4,11 +4,13 @@ import { cn } from "@/lib/utils";
 interface Parent3DAvatarProps {
   size?: "sm" | "md" | "lg";
   className?: string;
+  gender?: "Male" | "Female";
 }
 
 export const Parent3DAvatar = ({
   size = "md",
-  className
+  className,
+  gender = "Male"
 }: Parent3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-16 w-16",
@@ -16,7 +18,11 @@ export const Parent3DAvatar = ({
     lg: "h-32 w-32",
   };
 
-  // Using the uploaded image for the parent avatar
+  // Use the appropriate avatar based on gender
+  const avatarSrc = gender === "Female" 
+    ? "/lovable-uploads/219f256f-b5cc-4690-bc72-e88aeca5f0a9.png"  // Female parent avatar
+    : "/lovable-uploads/125f7b15-7adc-436d-874d-7488ebd8507e.png";  // Male parent avatar
+
   return (
     <div className={cn(
       sizeClasses[size],
@@ -24,10 +30,16 @@ export const Parent3DAvatar = ({
       className
     )}>
       <img 
-        src="/lovable-uploads/5490fca1-cc3d-4041-b89f-9dd2d90be0ec.png" 
-        alt="Parent Avatar"
-        className="h-full object-cover"
+        src={avatarSrc} 
+        alt={`${gender} Parent Avatar`}
+        className="h-full object-contain"
+        onError={(e) => {
+          e.currentTarget.onerror = null;
+          e.currentTarget.nextSibling!.textContent = "Avatar not available";
+          e.currentTarget.style.display = "none";
+        }}
       />
+      <span className="hidden text-sm text-gray-500 text-center"></span>
     </div>
   );
 };

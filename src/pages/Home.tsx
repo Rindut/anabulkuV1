@@ -8,16 +8,17 @@ import { HorizontalPetList } from "@/components/ui/horizontal-pet-list";
 import { JournalSection } from "@/components/ui/journal-section";
 import { StatusBar } from "@/components/ui/status-bar";
 
-// Mock data for pets - matching the image
+// Mock data for pets - matching the example case
 const mockPets = [
-  { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "cat" },
+  { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "dog" },
   { id: 2, name: "Oreo", gender: "Male", age: 1, petType: "dog" },
-  { id: 3, name: "Chia", gender: "Female", age: 2, petType: "cat" },
+  { id: 3, name: "Choco", gender: "Female", age: 2, petType: "cat" },
 ];
 
 const Home = () => {
   const [greeting, setGreeting] = useState("Good morning");
   const [parentName, setParentName] = useState("Eko");
+  const [parentGender, setParentGender] = useState<"Male" | "Female">("Male");
 
   // Set greeting based on time of day
   useEffect(() => {
@@ -45,7 +46,7 @@ const Home = () => {
         {/* Parent Profile Card */}
         <ParentInfoCard
           name={parentName}
-          avatar={<Parent3DAvatar size="md" />}
+          avatar={<Parent3DAvatar size="md" gender={parentGender} />}
           petCount={mockPets.length}
           className="mb-5"
         />

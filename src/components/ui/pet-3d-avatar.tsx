@@ -18,8 +18,10 @@ export const Pet3DAvatar = ({
     lg: "h-24 w-24",
   };
 
-  // Using the uploaded image - we'll need actual pet images in a real app
-  const imageUrl = "/lovable-uploads/5490fca1-cc3d-4041-b89f-9dd2d90be0ec.png";
+  // Use the appropriate avatar based on pet type
+  const avatarSrc = petType === "cat"
+    ? "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png"  // Cat avatar
+    : "/lovable-uploads/c22508c8-76e4-40a4-824b-6a4b629a00c4.png";  // Dog avatar
 
   return (
     <div className={cn(
@@ -28,10 +30,16 @@ export const Pet3DAvatar = ({
       className
     )}>
       <img 
-        src={imageUrl} 
+        src={avatarSrc} 
         alt={`${petType} avatar`}
         className="h-full object-contain"
+        onError={(e) => {
+          e.currentTarget.onerror = null;
+          e.currentTarget.nextSibling!.textContent = "Avatar not available";
+          e.currentTarget.style.display = "none";
+        }}
       />
+      <span className="hidden text-sm text-gray-500 text-center"></span>
     </div>
   );
 };
