@@ -34,29 +34,29 @@ const Home = () => {
 
   return (
     <MainLayout>
-      <div className="p-6">
-        <header className="mb-8">
-          <h1 className="text-5xl font-bold text-gray-900">PET FAMILY</h1>
-          <p className="text-lg text-gray-400">Your pet family information</p>
+      <div className="p-4">
+        <header className="mb-5">
+          <h1 className="text-4xl font-bold text-gray-900">PET FAMILY</h1>
+          <p className="text-sm text-gray-400">Your pet family information</p>
         </header>
 
-        <p className="text-3xl font-medium mb-8">{greeting}, {parentName}!</p>
+        <p className="text-2xl font-medium mb-4">{greeting}, {parentName}!</p>
 
         {/* Parent Profile Card */}
         <ParentProfileCard
           name={parentName}
           avatar={
-            <ParentAvatar3D gender="boy" size="xl" />
+            <ParentAvatar3D gender="boy" size="lg" />
           }
           petCount={mockPets.length}
-          className="mb-12"
+          className="mb-6"
         />
 
         {/* Pets Section */}
-        <h2 className="text-3xl font-bold mb-7">Hello, Kids!</h2>
-        <div className="grid grid-cols-2 gap-5 mb-12">
-          {/* Only showing first two pets as in the image */}
-          {mockPets.slice(0, 2).map((pet) => (
+        <h2 className="text-2xl font-bold mb-4">Hello, Kids!</h2>
+        <div className="grid grid-cols-2 gap-3 mb-6">
+          {/* Show up to 4 pets in the grid for better space usage */}
+          {mockPets.slice(0, 4).map((pet) => (
             <SimplifiedPetCard
               key={pet.id}
               name={pet.name}
@@ -66,7 +66,7 @@ const Home = () => {
                 <PetAvatar3D 
                   petType={pet.petType as "cat" | "dog"} 
                   gender={pet.gender === "Male" ? "male" : "female"} 
-                  size="xl" 
+                  size="lg" 
                 />
               }
             />
