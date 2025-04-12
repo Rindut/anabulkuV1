@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Parent3DAvatar } from "@/components/avatars/Parent3DAvatar";
-import { Pet3DAvatar } from "@/components/ui/pet-3d-avatar";
+import { Pet3DAvatar } from "@/components/avatars/Pet3DAvatar";
 import { PetCardHorizontal } from "@/components/ui/pet-card-horizontal";
 import { ParentInfoCard } from "@/components/ui/parent-info-card";
 import { HorizontalPetList } from "@/components/ui/horizontal-pet-list";
@@ -62,6 +62,7 @@ const Home = () => {
           renderPetImage={(pet) => (
             <Pet3DAvatar 
               petType={pet.petType as "cat" | "dog"} 
+              gender={pet.gender as "Male" | "Female"}
               size="lg"
               floating={true}
             />
@@ -73,7 +74,7 @@ const Home = () => {
               gender={pet.gender}
               age={pet.age}
               petType={pet.petType}
-              image={<Pet3DAvatar petType={pet.petType as "cat" | "dog"} size="lg" floating={true} />}
+              image={<Pet3DAvatar petType={pet.petType as "cat" | "dog"} gender={pet.gender as "Male" | "Female"} size="lg" floating={true} />}
               onClick={() => navigate(`/pet-care?pet=${pet.name}`)}
               className="mr-2"
             />

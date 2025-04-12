@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 
 interface Parent3DAvatarProps {
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   className?: string;
   gender?: "Male" | "Female";
   floating?: boolean;
@@ -16,8 +16,9 @@ export const Parent3DAvatar = ({
 }: Parent3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-16 w-16",
-    md: "h-[8.5rem] w-[8.5rem]",  // Increased size to make more hair extend outside
+    md: "h-[8.5rem] w-[8.5rem]",
     lg: "h-32 w-32",
+    xl: "h-40 w-40"
   };
 
   // Use the appropriate avatar based on gender
@@ -36,10 +37,12 @@ export const Parent3DAvatar = ({
         src={avatarSrc} 
         alt={`${gender} Parent Avatar`}
         className={cn(
-          "w-full h-full object-cover object-bottom",
-          floating && "absolute bottom-0 h-[130%]" 
+          "w-full object-cover object-bottom",
+          floating && "absolute bottom-0 h-[130%]",
+          !floating && "h-full"
         )}
         style={{ objectPosition: 'bottom' }}
+        loading="lazy"
         onError={(e) => {
           e.currentTarget.onerror = null;
           e.currentTarget.nextSibling!.textContent = "Avatar not available";
