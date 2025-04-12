@@ -18,7 +18,7 @@ export const BottomNavigation = () => {
 
   return (
     <div className="fixed bottom-0 w-full max-w-md left-1/2 transform -translate-x-1/2 px-5 pb-2">
-      <div className="flex items-center justify-around bg-petapp-green rounded-full shadow-md py-1.5">
+      <div className="flex items-center justify-around bg-petapp-teal rounded-full shadow-md py-1.5">
         {navItems.map((item, index) => {
           const active = isActive(item.path);
           
@@ -28,7 +28,7 @@ export const BottomNavigation = () => {
               to={item.path} 
               className="flex flex-col items-center px-2"
             >
-              <div className="h-5 w-5 flex items-center justify-center">
+              <div className={`h-5 w-5 flex items-center justify-center ${active ? "bg-white/20 rounded-full p-2" : ""}`}>
                 <item.icon 
                   className={`${active ? "text-white" : "text-white/70"} h-4 w-4`} 
                 />

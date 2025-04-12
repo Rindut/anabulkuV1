@@ -135,7 +135,7 @@ const AddRecord = () => {
           {/* Save Button */}
           <button
             type="submit"
-            className="w-full py-4 bg-[#5E9E94] text-white font-bold rounded-lg"
+            className="w-full py-4 bg-petapp-teal text-white font-bold rounded-lg"
           >
             Save Record
           </button>

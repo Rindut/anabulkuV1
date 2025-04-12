@@ -43,6 +43,7 @@ export default {
 					mint: '#BFE6E0',
 					beige: '#FBEEDC',
 					orange: '#F9AD6A',
+					teal: '#43978D',
 					text: {
 						neutral: '#5C5C5C',
 						strong: '#333333',
