@@ -22,8 +22,8 @@ export const HorizontalPetList = ({
   renderPetCard
 }: HorizontalPetListProps) => {
   return (
-    <div className="overflow-visible pt-16 pb-4 -mx-5 px-5 scrollbar-none mb-8">
-      <div className="flex space-x-4 overflow-visible">
+    <div className="pt-16 pb-4 -mx-5 px-5 mb-8 overflow-hidden">
+      <div className="flex space-x-4 overflow-x-auto scrollbar-none py-2 overflow-y-visible">
         {pets.map((pet) => {
           if (renderPetCard) {
             return renderPetCard(pet);
