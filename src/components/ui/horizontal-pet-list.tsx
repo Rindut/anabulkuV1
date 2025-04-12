@@ -13,24 +13,32 @@ interface Pet {
 interface HorizontalPetListProps {
   pets: Pet[];
   renderPetImage: (pet: Pet) => ReactNode;
+  renderPetCard?: (pet: Pet) => ReactNode;
 }
 
 export const HorizontalPetList = ({
   pets,
-  renderPetImage
+  renderPetImage,
+  renderPetCard
 }: HorizontalPetListProps) => {
   return (
     <div className="overflow-x-auto pb-3 -mx-5 px-5 scrollbar-none mb-6">
       <div className="flex space-x-3">
-        {pets.map((pet) => (
-          <PetCardHorizontal
-            key={pet.id}
-            name={pet.name}
-            gender={pet.gender}
-            age={pet.age}
-            image={renderPetImage(pet)}
-          />
-        ))}
+        {pets.map((pet) => {
+          if (renderPetCard) {
+            return renderPetCard(pet);
+          }
+          return (
+            <PetCardHorizontal
+              key={pet.id}
+              name={pet.name}
+              gender={pet.gender}
+              age={pet.age}
+              petType={pet.petType}
+              image={renderPetImage(pet)}
+            />
+          );
+        })}
       </div>
     </div>
   );

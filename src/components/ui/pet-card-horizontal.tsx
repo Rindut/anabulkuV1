@@ -6,6 +6,7 @@ interface PetCardHorizontalProps {
   name: string;
   gender: string;
   age: number;
+  petType: string;
   image: ReactNode;
   className?: string;
 }
@@ -14,6 +15,7 @@ export const PetCardHorizontal = ({
   name,
   gender,
   age,
+  petType,
   image,
   className,
 }: PetCardHorizontalProps) => {
@@ -31,7 +33,7 @@ export const PetCardHorizontal = ({
       <div className="text-center w-full">
         <h3 className="text-base font-semibold text-petapp-text-strong mb-0.5">{name}</h3>
         <p className="text-petapp-text-neutral text-xs font-medium">
-          {gender} - {age} {age === 1 ? 'yo' : 'yo'}
+          {age} yo {gender.toLowerCase()} {petType}
         </p>
       </div>
     </div>
