@@ -1,19 +1,18 @@
 
 import { useEffect, useState } from "react";
 import { MainLayout } from "@/components/layout/MainLayout";
-import { ParentAvatar3D } from "@/components/avatars/ParentAvatar3D";
-import { PetAvatar3D } from "@/components/ui/pet-avatar-3d";
-import { ParentProfileCard } from "@/components/ui/parent-profile-card";
-import { SimplifiedPetCard } from "@/components/ui/simplified-pet-card";
+import { Parent3DAvatar } from "@/components/avatars/Parent3DAvatar";
+import { Pet3DAvatar } from "@/components/ui/pet-3d-avatar";
+import { ParentInfoCard } from "@/components/ui/parent-info-card";
+import { HorizontalPetList } from "@/components/ui/horizontal-pet-list";
 import { JournalSection } from "@/components/ui/journal-section";
+import { StatusBar } from "@/components/ui/status-bar";
 
 // Mock data for pets - matching the image
 const mockPets = [
   { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "cat" },
   { id: 2, name: "Oreo", gender: "Male", age: 1, petType: "dog" },
   { id: 3, name: "Chia", gender: "Female", age: 2, petType: "cat" },
-  { id: 4, name: "Kunyit", gender: "Female", age: 4, petType: "dog" },
-  { id: 5, name: "Pepper", gender: "Male", age: 2, petType: "dog" },
 ];
 
 const Home = () => {
@@ -34,44 +33,36 @@ const Home = () => {
 
   return (
     <MainLayout>
-      <div className="p-4">
-        <header className="mb-5">
-          <h1 className="text-4xl font-bold text-gray-900">PET FAMILY</h1>
-          <p className="text-sm text-gray-400">Your pet family information</p>
+      <StatusBar />
+      <div className="px-5 py-3 bg-petapp-white min-h-screen">
+        <header className="mb-4">
+          <h1 className="text-3xl font-bold text-petapp-text-strong tracking-tight">PET FAMILY</h1>
+          <p className="text-xs text-petapp-text-neutral">Your pet family information</p>
         </header>
 
-        <p className="text-2xl font-medium mb-4">{greeting}, {parentName}!</p>
+        <p className="text-lg font-semibold mb-3 font-poppins">{greeting}, {parentName}!</p>
 
         {/* Parent Profile Card */}
-        <ParentProfileCard
+        <ParentInfoCard
           name={parentName}
-          avatar={
-            <ParentAvatar3D gender="boy" size="lg" />
-          }
+          avatar={<Parent3DAvatar size="md" />}
           petCount={mockPets.length}
-          className="mb-6"
+          className="mb-5"
         />
 
         {/* Pets Section */}
-        <h2 className="text-2xl font-bold mb-4">Hello, Kids!</h2>
-        <div className="grid grid-cols-2 gap-3 mb-6">
-          {/* Show up to 4 pets in the grid for better space usage */}
-          {mockPets.slice(0, 4).map((pet) => (
-            <SimplifiedPetCard
-              key={pet.id}
-              name={pet.name}
-              gender={pet.gender}
-              age={pet.age}
-              image={
-                <PetAvatar3D 
-                  petType={pet.petType as "cat" | "dog"} 
-                  gender={pet.gender === "Male" ? "male" : "female"} 
-                  size="lg" 
-                />
-              }
+        <h2 className="text-xl font-bold mb-3">Hello, Kids!</h2>
+        
+        {/* Horizontal scrollable pet list */}
+        <HorizontalPetList 
+          pets={mockPets}
+          renderPetImage={(pet) => (
+            <Pet3DAvatar 
+              petType={pet.petType as "cat" | "dog"} 
+              size="md" 
             />
-          ))}
-        </div>
+          )}
+        />
 
         {/* Journal Section */}
         <JournalSection />

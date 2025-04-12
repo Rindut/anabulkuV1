@@ -1,31 +1,24 @@
 
-import { ButtonCustom } from "./button-custom";
 import { useNavigate } from "react-router-dom";
 
-interface JournalSectionProps {
-  compact?: boolean;
-}
-
-export const JournalSection = ({ compact = false }: JournalSectionProps) => {
+export const JournalSection = () => {
   const navigate = useNavigate();
   
   return (
-    <div className={compact ? "mt-6" : "mt-12"}>
-      <h2 className={compact ? "text-2xl font-bold mb-3" : "text-3xl font-bold mb-5"}>Pets Journal</h2>
-      <p className={`text-gray-700 ${compact ? "mb-5 text-sm" : "mb-8"} text-center px-3 leading-relaxed`}>
+    <div className="mt-6">
+      <h2 className="text-xl font-bold mb-2 text-center text-petapp-text-strong">Pets Journal</h2>
+      <p className="text-petapp-text-neutral text-sm mb-5 text-center px-1 leading-relaxed max-w-sm mx-auto">
         Keep up with your pet's daily vibes! You can see your pet's 
         Sleep Style Prediction, Highlight Activities, and Today's Mood.
       </p>
       
-      <div className={`flex justify-center ${compact ? "mt-4" : "mt-8"}`}>
-        <ButtonCustom 
-          variant="secondary" 
-          size={compact ? "md" : "lg"}
+      <div className="flex justify-center mb-16">
+        <button 
           onClick={() => navigate('/journal')}
-          className={`bg-amber-200 text-gray-800 hover:bg-amber-300 ${compact ? "px-6 py-3 text-base" : "px-8 py-4 text-lg"}`}
+          className="bg-petapp-beige text-petapp-text-strong font-bold py-4 px-8 rounded-full shadow-sm hover:shadow-md transition-shadow"
         >
           Go to Pets Journal
-        </ButtonCustom>
+        </button>
       </div>
     </div>
   );

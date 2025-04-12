@@ -18,7 +18,8 @@ export default {
 			}
 		},
 		fontFamily: {
-			sans: ['Varela Round', 'system-ui', 'sans-serif'],
+			sans: ['Poppins', 'system-ui', 'sans-serif'],
+			poppins: ['Poppins', 'sans-serif'],
 		},
 		extend: {
 			colors: {
@@ -32,12 +33,17 @@ export default {
 					foreground: 'hsl(var(--primary-foreground))'
 				},
 				petapp: {
-					green: '#BCD6D0',
+					green: '#A8CBB7',
 					pink: '#FCE6E9',
-					peach: '#FDF5EB',
-					white: '#FFFFFF',
+					peach: '#FDF9F4',
+					white: '#F8F9F8',
 					inactive: '#9BBDB7',
 					mint: '#BFE6E0',
+					beige: '#FBEEDC',
+					text: {
+						neutral: '#5C5C5C',
+						strong: '#333333',
+					}
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
