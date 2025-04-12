@@ -16,7 +16,7 @@ export const Parent3DAvatar = ({
 }: Parent3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-16 w-16",
-    md: "h-[8.5rem] w-[8.5rem]",
+    md: "h-[8.5rem] w-[8.5rem]",  // Increased size to make more hair extend outside
     lg: "h-32 w-32",
   };
 
@@ -36,13 +36,10 @@ export const Parent3DAvatar = ({
         src={avatarSrc} 
         alt={`${gender} Parent Avatar`}
         className={cn(
-          "w-full object-cover object-bottom",
+          "w-full h-full object-cover object-bottom",
           floating && "absolute bottom-0 h-[130%]" 
         )}
-        style={{ 
-          objectPosition: 'bottom', 
-          height: '100%' 
-        }}
+        style={{ objectPosition: 'bottom' }}
         onError={(e) => {
           e.currentTarget.onerror = null;
           e.currentTarget.nextSibling!.textContent = "Avatar not available";
