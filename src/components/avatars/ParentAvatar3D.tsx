@@ -1,5 +1,4 @@
 
-import { User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ParentAvatar3DProps {
@@ -20,23 +19,46 @@ export const ParentAvatar3D = ({
     xl: "h-40 w-40"
   };
 
-  // Using a placeholder rounded avatar with User icon
-  // In a real app, this would be replaced with 3D models
+  // Match gender format to the required avatar format
+  const mappedGender = gender === "boy" ? "Male" : "Female";
+  
+  // Use the appropriate avatar based on gender
+  const avatarSrc = mappedGender === "Female" 
+    ? "/lovable-uploads/avatar_petowner_woman.png"  // Female parent avatar
+    : "/lovable-uploads/avatar_petowner_man.png";  // Male parent avatar
+    
+  // Fallback images if new assets aren't uploaded yet
+  const fallbackSrc = mappedGender === "Female" 
+    ? "/lovable-uploads/219f256f-b5cc-4690-bc72-e88aeca5f0a9.png"
+    : "/lovable-uploads/125f7b15-7adc-436d-874d-7488ebd8507e.png";
+
   return (
     <div className={cn(
-      sizeClasses[size], 
-      gender === "boy" ? "bg-blue-200" : "bg-pink-200",
-      "rounded-full flex items-center justify-center shadow-sm",
+      sizeClasses[size],
+      "flex items-center justify-center overflow-hidden rounded-full shadow-sm",
       className
     )}>
-      <User 
-        className={cn(
-          gender === "boy" ? "text-blue-700" : "text-pink-700",
-          size === "sm" ? "h-6 w-6" : 
-          size === "md" ? "h-10 w-10" : 
-          size === "lg" ? "h-16 w-16" :
-          "h-24 w-24"
-        )} 
+      <img 
+        src={avatarSrc} 
+        alt={`${mappedGender} Parent Avatar`}
+        className="w-full h-full object-cover"
+        loading="lazy"
+        onError={(e) => {
+          // Try fallback image if primary fails
+          const imgElement = e.currentTarget;
+          imgElement.onerror = null;
+          imgElement.src = fallbackSrc;
+          
+          // Add second error handler for fallback image
+          imgElement.onerror = (e2) => {
+            // If fallback also fails, show error message
+            if (e2 instanceof Event && e2.currentTarget instanceof HTMLImageElement) {
+              const failedImg = e2.currentTarget;
+              failedImg.onerror = null;
+              failedImg.style.display = "none";
+            }
+          };
+        }}
       />
     </div>
   );

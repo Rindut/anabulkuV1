@@ -23,8 +23,13 @@ export const Pet3DAvatar = ({
     xl: "h-48 w-48",
   };
 
-  // Use the appropriate avatar based on pet type and gender
+  // Use the appropriate avatar based on pet type only (as specified in requirements)
   const avatarSrc = petType === "cat"
+    ? "/lovable-uploads/avatar_pet_cat.png"  // Cat avatar - new asset
+    : "/lovable-uploads/avatar_pet_dog.png"; // Dog avatar - new asset
+    
+  // Fallback images if new assets aren't uploaded yet
+  const fallbackSrc = petType === "cat"
     ? (gender === "Female" 
         ? "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png"  // Female cat
         : "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png") // Male cat
@@ -41,7 +46,7 @@ export const Pet3DAvatar = ({
     )}>
       <img 
         src={avatarSrc} 
-        alt={`${gender} ${petType} avatar`}
+        alt={`${petType} avatar`}
         className={cn(
           "w-full object-cover object-bottom",
           floating && "absolute bottom-0 h-[160%] drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] z-10",
@@ -53,9 +58,21 @@ export const Pet3DAvatar = ({
         }}
         loading="lazy"
         onError={(e) => {
-          e.currentTarget.onerror = null;
-          e.currentTarget.nextSibling!.textContent = "Avatar not available";
-          e.currentTarget.style.display = "none";
+          // Try fallback image if primary fails
+          const imgElement = e.currentTarget;
+          imgElement.onerror = null;
+          imgElement.src = fallbackSrc;
+          
+          // Add second error handler for fallback image
+          imgElement.onerror = (e2) => {
+            // If fallback also fails, show error message
+            if (e2 instanceof Event && e2.currentTarget instanceof HTMLImageElement) {
+              const failedImg = e2.currentTarget;
+              failedImg.onerror = null;
+              failedImg.nextSibling!.textContent = "Avatar not available";
+              failedImg.style.display = "none";
+            }
+          };
         }}
       />
       <span className="hidden text-sm text-gray-500 text-center"></span>
