@@ -24,19 +24,22 @@ export const PetCardHorizontal = ({
   return (
     <div 
       className={cn(
-        "bg-petapp-petBox rounded-2xl p-4 shadow-sm min-w-[130px] flex-shrink-0",
+        "bg-petapp-petBox rounded-[20px] p-5 pb-4 pt-14 shadow-md min-w-[140px] flex-shrink-0",
         "flex flex-col items-center justify-between h-full",
-        "cursor-pointer transition-transform hover:scale-105",
+        "cursor-pointer transition-all hover:scale-105 hover:shadow-lg",
+        "relative mt-10", // Added top margin to make room for the floating avatar
         className
       )}
       onClick={onClick}
     >
-      <div className="flex-1 flex items-center justify-center mb-1 pt-2 overflow-visible h-28 relative">
+      {/* Avatar Container - Positioned absolutely to float above the card */}
+      <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-10">
         {image}
       </div>
-      <div className="text-center w-full">
-        <h3 className="text-base font-semibold text-petapp-text-strong mb-0.5">{name}</h3>
-        <p className="text-petapp-text-neutral text-xs font-medium">
+      
+      <div className="text-center w-full mt-3">
+        <h3 className="text-lg font-bold text-petapp-text-strong mb-1">{name}</h3>
+        <p className="text-petapp-text-neutral text-sm font-medium">
           {age} yo {gender.toLowerCase()} {petType}
         </p>
       </div>

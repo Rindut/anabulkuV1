@@ -62,7 +62,7 @@ const Home = () => {
           renderPetImage={(pet) => (
             <Pet3DAvatar 
               petType={pet.petType as "cat" | "dog"} 
-              size="md"
+              size="lg"
               floating={true}
             />
           )}
@@ -73,8 +73,9 @@ const Home = () => {
               gender={pet.gender}
               age={pet.age}
               petType={pet.petType}
-              image={<Pet3DAvatar petType={pet.petType as "cat" | "dog"} size="md" floating={true} />}
+              image={<Pet3DAvatar petType={pet.petType as "cat" | "dog"} size="lg" floating={true} />}
               onClick={() => navigate(`/pet-care?pet=${pet.name}`)}
+              className="mr-2"
             />
           )}
         />

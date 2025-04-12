@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 interface Pet3DAvatarProps {
   petType: "cat" | "dog";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   className?: string;
   floating?: boolean;
 }
@@ -18,6 +18,7 @@ export const Pet3DAvatar = ({
     sm: "h-20 w-20",
     md: "h-32 w-32",
     lg: "h-40 w-40",
+    xl: "h-48 w-48", // Added extra large size
   };
 
   // Use the appropriate avatar based on pet type
@@ -37,12 +38,12 @@ export const Pet3DAvatar = ({
         alt={`${petType} avatar`}
         className={cn(
           "w-full object-cover object-bottom",
-          floating && "absolute bottom-0 h-[150%] drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] z-10", // Enhanced shadow for floating effect
+          floating && "absolute bottom-0 h-[160%] drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] z-10", // Enhanced shadow and increased height for floating effect
           !floating && "h-[150%]"
         )}
         style={{ 
           objectPosition: 'bottom',
-          transform: floating ? 'translateY(-20px)' : undefined // Move avatar up slightly for floating effect
+          transform: floating ? 'translateY(-25px)' : undefined // Move avatar up more for floating effect
         }}
         onError={(e) => {
           e.currentTarget.onerror = null;
