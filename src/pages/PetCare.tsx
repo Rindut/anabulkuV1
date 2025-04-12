@@ -23,8 +23,8 @@ const mockActivities = [
     activities: [
       { id: 1, petName: "Wijen", type: "Pet Hotel", completed: true },
       { id: 2, petName: "Wijen", type: "Grooming", completed: true },
-      { id: 3, petName: "Chia", type: "Pet Hotel", completed: true },
-      { id: 4, petName: "Chia", type: "Grooming", completed: true }
+      { id: 3, petName: "Kunyit", type: "Pet Hotel", completed: true },
+      { id: 4, petName: "Kunyit", type: "Grooming", completed: true }
     ]
   },
   { 

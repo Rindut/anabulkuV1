@@ -16,8 +16,8 @@ import {
 const mockPets = [
   { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "cat" as const },
   { id: 2, name: "Oreo", gender: "Male", age: 1, petType: "dog" as const },
-  { id: 3, name: "Chia", gender: "Female", age: 2, petType: "cat" as const },
-  { id: 4, name: "Kunyit", gender: "Female", age: 4, petType: "dog" as const },
+  { id: 3, name: "Chia", gender: "Male", age: 4, petType: "cat" as const },
+  { id: 4, name: "Kunyit", gender: "Male", age: 5, petType: "cat" as const },
 ];
 
 const Journal = () => {
