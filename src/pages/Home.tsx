@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Parent3DAvatar } from "@/components/avatars/Parent3DAvatar";
 import { Pet3DAvatar } from "@/components/ui/pet-3d-avatar";
@@ -7,16 +8,17 @@ import { PetCardHorizontal } from "@/components/ui/pet-card-horizontal";
 import { ParentInfoCard } from "@/components/ui/parent-info-card";
 import { HorizontalPetList } from "@/components/ui/horizontal-pet-list";
 import { JournalSection } from "@/components/ui/journal-section";
-import { StatusBar } from "@/components/ui/status-bar";
 
 // Mock data for pets - matching the example case
 const mockPets = [
   { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "dog" },
   { id: 2, name: "Oreo", gender: "Male", age: 1, petType: "dog" },
-  { id: 3, name: "Choco", gender: "Female", age: 2, petType: "cat" },
+  { id: 3, name: "Chia", gender: "Female", age: 2, petType: "cat" },
+  { id: 4, name: "Kunyit", gender: "Female", age: 1, petType: "cat" },
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
   const [greeting, setGreeting] = useState("Good morning");
   const [parentName, setParentName] = useState("Eko");
   const [parentGender, setParentGender] = useState<"Male" | "Female">("Male");
@@ -72,6 +74,7 @@ const Home = () => {
               age={pet.age}
               petType={pet.petType}
               image={<Pet3DAvatar petType={pet.petType as "cat" | "dog"} size="md" floating={true} />}
+              onClick={() => navigate(`/pet-care?pet=${pet.name}`)}
             />
           )}
         />

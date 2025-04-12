@@ -9,6 +9,7 @@ interface PetCardHorizontalProps {
   petType: string;
   image: ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
 export const PetCardHorizontal = ({
@@ -18,14 +19,17 @@ export const PetCardHorizontal = ({
   petType,
   image,
   className,
+  onClick,
 }: PetCardHorizontalProps) => {
   return (
     <div 
       className={cn(
         "bg-petapp-peach rounded-2xl p-4 shadow-sm min-w-[130px] flex-shrink-0",
         "flex flex-col items-center justify-between h-full",
+        "cursor-pointer transition-transform hover:scale-105",
         className
       )}
+      onClick={onClick}
     >
       <div className="flex-1 flex items-center justify-center mb-1 pt-2 overflow-visible h-28 relative">
         {image}

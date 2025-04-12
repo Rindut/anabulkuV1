@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Check } from "lucide-react";
 
@@ -47,7 +48,16 @@ const mockActivities = [
 ];
 
 const PetCare = () => {
+  const [searchParams] = useSearchParams();
   const [activeFilter, setActiveFilter] = useState("All");
+  
+  // Set active filter based on URL parameter
+  useEffect(() => {
+    const petParam = searchParams.get("pet");
+    if (petParam && filterOptions.includes(petParam)) {
+      setActiveFilter(petParam);
+    }
+  }, [searchParams]);
 
   // Filter activities based on selected pet
   const filteredActivities = mockActivities.map(dateGroup => {
