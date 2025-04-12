@@ -16,7 +16,7 @@ export const Parent3DAvatar = ({
 }: Parent3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-16 w-16",
-    md: "h-24 w-24",
+    md: "h-20 w-20",  // Adjusted to match the 80px request for medium size
     lg: "h-32 w-32",
   };
 
@@ -29,7 +29,7 @@ export const Parent3DAvatar = ({
     <div className={cn(
       sizeClasses[size],
       "flex items-center justify-center",
-      floating && "drop-shadow-[0_6px_10px_rgba(0,0,0,0.2)] scale-110", // Enhanced shadow and slightly larger when floating
+      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] scale-110 bg-white/30 rounded-full backdrop-blur-sm", // Enhanced shadow and slightly larger when floating with subtle glow
       className
     )}>
       <img 
