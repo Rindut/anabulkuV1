@@ -37,10 +37,10 @@ const Home = () => {
       <div className="px-5 py-3 bg-petapp-white min-h-screen">
         <header className="mb-4">
           <h1 className="text-[36px] font-bold text-black font-rubik">PET FAMILY</h1>
-              <p className="text-[15px] text-gray-500 font-rubik">Your pet family information</p>
+          <p className="text-[15px] text-gray-500 font-rubik">Your pet family information</p>
         </header>
 
-        <p className="text-[15px] font-bold text-black font-poppins">{greeting}, {parentName}!</p>
+        <p className="text-[15px] font-bold text-black font-poppins mb-2">{greeting}, {parentName}!</p>
 
         {/* Parent Profile Card */}
         <ParentInfoCard
