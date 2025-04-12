@@ -18,13 +18,13 @@ export const ParentInfoCard = ({
   return (
     <div 
       className={cn(
-        "bg-[#D9EBE7]/60 rounded-xl p-3 flex items-start",
-        "shadow-sm", // Removed the extra top padding and margin
+        "bg-[#D9EBE7]/60 rounded-xl p-3 flex items-start relative overflow-visible",
+        "shadow-sm", // Added overflow-visible to allow elements to extend outside
         className
       )}
     >
-      {/* Avatar Container positioned normally (not floating) */}
-      <div className="z-[1] mr-4">
+      {/* Avatar Container with larger size to extend outside */}
+      <div className="z-[1] mr-6 -mt-4 -ml-1">
         {avatar}
       </div>
       

@@ -16,7 +16,7 @@ export const Parent3DAvatar = ({
 }: Parent3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-16 w-16",
-    md: "h-20 w-20",  // Adjusted to match the 80px request for medium size
+    md: "h-28 w-28",  // Increased size to make hair extend outside
     lg: "h-32 w-32",
   };
 
@@ -29,13 +29,13 @@ export const Parent3DAvatar = ({
     <div className={cn(
       sizeClasses[size],
       "flex items-center justify-center",
-      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] scale-110", // Enhanced shadow and slightly larger when floating
+      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] scale-125", // Increased scale to make hair extend outside
       className
     )}>
       <img 
         src={avatarSrc} 
         alt={`${gender} Parent Avatar`}
-        className="h-full object-contain"
+        className="h-full w-full object-contain"
         onError={(e) => {
           e.currentTarget.onerror = null;
           e.currentTarget.nextSibling!.textContent = "Avatar not available";
