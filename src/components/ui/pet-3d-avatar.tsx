@@ -21,15 +21,10 @@ export const Pet3DAvatar = ({
     xl: "h-48 w-48", // Added extra large size
   };
 
-  // Use the appropriate avatar based on pet type with compressed webp versions
+  // Use the appropriate avatar based on pet type
   const avatarSrc = petType === "cat"
     ? "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png"  // Cat avatar
     : "/lovable-uploads/c22508c8-76e4-40a4-824b-6a4b629a00c4.png";  // Dog avatar
-
-  // Optimized path - low quality placeholder
-  const optimizedAvatarSrc = petType === "cat"
-    ? "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png"  // Compressed cat
-    : "/lovable-uploads/5490fca1-cc3d-4041-b89f-9dd2d90be0ec.png";  // Compressed dog
 
   return (
     <div className={cn(
@@ -39,9 +34,8 @@ export const Pet3DAvatar = ({
       className
     )}>
       <img 
-        src={optimizedAvatarSrc} 
+        src={avatarSrc} 
         alt={`${petType} avatar`}
-        loading="lazy"
         className={cn(
           "w-full object-cover object-bottom",
           floating && "absolute bottom-0 h-[160%] drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] z-10", // Enhanced shadow and increased height for floating effect

@@ -24,11 +24,6 @@ export const Parent3DAvatar = ({
   const avatarSrc = gender === "Female" 
     ? "/lovable-uploads/219f256f-b5cc-4690-bc72-e88aeca5f0a9.png"  // Female parent avatar
     : "/lovable-uploads/125f7b15-7adc-436d-874d-7488ebd8507e.png";  // Male parent avatar
-    
-  // Optimized versions
-  const optimizedAvatarSrc = gender === "Female" 
-    ? "/lovable-uploads/1ff6ea3f-6c36-4d39-b4e8-84d13b27c688.png"  // Compressed female avatar
-    : "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png";  // Compressed male avatar
 
   return (
     <div className={cn(
@@ -38,10 +33,8 @@ export const Parent3DAvatar = ({
       className
     )}>
       <img 
-        src={optimizedAvatarSrc} 
+        src={avatarSrc} 
         alt={`${gender} Parent Avatar`}
-        loading="lazy"
-        decoding="async"
         className={cn(
           "w-full h-full object-cover object-bottom",
           floating && "absolute bottom-0 h-[130%]" 
