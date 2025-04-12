@@ -16,7 +16,7 @@ export const Pet3DAvatar = ({
 }: Pet3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-20 w-20",
-    md: "h-32 w-32", // Further increased size to emphasize head extending
+    md: "h-32 w-32",
     lg: "h-40 w-40",
   };
 
@@ -29,7 +29,7 @@ export const Pet3DAvatar = ({
     <div className={cn(
       sizeClasses[size],
       "flex items-end justify-center relative",
-      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]",
+      floating && "relative z-10", // Added z-index to make avatar appear above card
       className
     )}>
       <img 
@@ -37,10 +37,13 @@ export const Pet3DAvatar = ({
         alt={`${petType} avatar`}
         className={cn(
           "w-full object-cover object-bottom",
-          floating && "absolute bottom-0 h-[150%]", // Increased from 130% to 150%
+          floating && "absolute bottom-0 h-[150%] drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] z-10", // Enhanced shadow for floating effect
           !floating && "h-[150%]"
         )}
-        style={{ objectPosition: 'bottom' }}
+        style={{ 
+          objectPosition: 'bottom',
+          transform: floating ? 'translateY(-20px)' : undefined // Move avatar up slightly for floating effect
+        }}
         onError={(e) => {
           e.currentTarget.onerror = null;
           e.currentTarget.nextSibling!.textContent = "Avatar not available";

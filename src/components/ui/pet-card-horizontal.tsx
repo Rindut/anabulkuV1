@@ -27,7 +27,7 @@ export const PetCardHorizontal = ({
         className
       )}
     >
-      <div className="flex-1 flex items-center justify-center mb-1 pt-2 overflow-visible h-24">
+      <div className="flex-1 flex items-center justify-center mb-1 pt-2 overflow-visible h-28 relative">
         {image}
       </div>
       <div className="text-center w-full">
