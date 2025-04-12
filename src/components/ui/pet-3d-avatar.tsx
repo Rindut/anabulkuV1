@@ -5,17 +5,19 @@ interface Pet3DAvatarProps {
   petType: "cat" | "dog";
   size?: "sm" | "md" | "lg";
   className?: string;
+  floating?: boolean;
 }
 
 export const Pet3DAvatar = ({
   petType,
   size = "md",
-  className
+  className,
+  floating = false
 }: Pet3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-16 w-16",
-    md: "h-20 w-20",
-    lg: "h-24 w-24",
+    md: "h-24 w-24", // Increased size to make head extend outside
+    lg: "h-28 w-28",
   };
 
   // Use the appropriate avatar based on pet type
@@ -26,13 +28,19 @@ export const Pet3DAvatar = ({
   return (
     <div className={cn(
       sizeClasses[size],
-      "flex items-center justify-center",
+      "flex items-end justify-center relative",
+      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]",
       className
     )}>
       <img 
         src={avatarSrc} 
         alt={`${petType} avatar`}
-        className="h-full object-contain"
+        className={cn(
+          "w-full object-cover object-bottom",
+          floating && "absolute bottom-0 h-[130%]",
+          !floating && "h-[130%]"
+        )}
+        style={{ objectPosition: 'bottom' }}
         onError={(e) => {
           e.currentTarget.onerror = null;
           e.currentTarget.nextSibling!.textContent = "Avatar not available";

@@ -61,7 +61,8 @@ const Home = () => {
           renderPetImage={(pet) => (
             <Pet3DAvatar 
               petType={pet.petType as "cat" | "dog"} 
-              size="md" 
+              size="md"
+              floating={true}
             />
           )}
           renderPetCard={(pet) => (
@@ -71,7 +72,7 @@ const Home = () => {
               gender={pet.gender}
               age={pet.age}
               petType={pet.petType}
-              image={<Pet3DAvatar petType={pet.petType as "cat" | "dog"} size="md" />}
+              image={<Pet3DAvatar petType={pet.petType as "cat" | "dog"} size="md" floating={true} />}
             />
           )}
         />
