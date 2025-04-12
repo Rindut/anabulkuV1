@@ -27,7 +27,7 @@ export const PetCardHorizontal = ({
         "bg-petapp-petBox rounded-[20px] p-5 pb-4 pt-16 shadow-md min-w-[140px] flex-shrink-0", // Increased top padding
         "flex flex-col items-center justify-between h-full",
         "cursor-pointer transition-all hover:scale-105 hover:shadow-lg",
-        "relative mt-14", // Increased top margin for better avatar visibility
+        "relative mt-14 snap-center", // Added snap-center for better scroll behavior
         className
       )}
       onClick={onClick}
