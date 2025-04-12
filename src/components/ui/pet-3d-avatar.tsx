@@ -15,9 +15,9 @@ export const Pet3DAvatar = ({
   floating = false
 }: Pet3DAvatarProps) => {
   const sizeClasses = {
-    sm: "h-16 w-16",
-    md: "h-24 w-24", // Increased size to make head extend outside
-    lg: "h-28 w-28",
+    sm: "h-20 w-20",
+    md: "h-32 w-32", // Further increased size to emphasize head extending
+    lg: "h-40 w-40",
   };
 
   // Use the appropriate avatar based on pet type
@@ -37,8 +37,8 @@ export const Pet3DAvatar = ({
         alt={`${petType} avatar`}
         className={cn(
           "w-full object-cover object-bottom",
-          floating && "absolute bottom-0 h-[130%]",
-          !floating && "h-[130%]"
+          floating && "absolute bottom-0 h-[150%]", // Increased from 130% to 150%
+          !floating && "h-[150%]"
         )}
         style={{ objectPosition: 'bottom' }}
         onError={(e) => {
