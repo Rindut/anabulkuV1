@@ -28,7 +28,7 @@ export const Parent3DAvatar = ({
   return (
     <div className={cn(
       sizeClasses[size],
-      "flex items-end justify-center relative", // Change to items-end to align bottom
+      "flex items-end justify-center relative", 
       floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]",
       className
     )}>
@@ -36,9 +36,10 @@ export const Parent3DAvatar = ({
         src={avatarSrc} 
         alt={`${gender} Parent Avatar`}
         className={cn(
-          "w-full object-cover object-bottom", // Change to object-cover and object-bottom
-          floating && "absolute bottom-0 h-[130%]" // Keep head extending outside
+          "w-full h-full object-cover object-bottom",
+          floating && "absolute bottom-0 h-[130%]" 
         )}
+        style={{ objectPosition: 'bottom' }}
         onError={(e) => {
           e.currentTarget.onerror = null;
           e.currentTarget.nextSibling!.textContent = "Avatar not available";
