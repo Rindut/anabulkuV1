@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Parent3DAvatar } from "@/components/avatars/Parent3DAvatar";
-import { Pet3DAvatar } from "@/components/avatars/Pet3DAvatar";
+import { CatAvatar } from "@/components/avatars/CatAvatar";
+import { DogAvatar } from "@/components/avatars/DogAvatar";
 import { PetCardHorizontal } from "@/components/ui/pet-card-horizontal";
 import { ParentInfoCard } from "@/components/ui/parent-info-card";
 import { HorizontalPetList } from "@/components/ui/horizontal-pet-list";
 import { JournalSection } from "@/components/ui/journal-section";
 
 // Mock data for pets - matching the example case
+// Ensure consistent casing for petType to avoid issues
 const mockPets = [
   { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "dog" },
   { id: 2, name: "Oreo", gender: "Male", age: 1, petType: "dog" },
@@ -59,26 +61,58 @@ const Home = () => {
         {/* Horizontal scrollable pet list */}
         <HorizontalPetList 
           pets={mockPets}
-          renderPetImage={(pet) => (
-            <Pet3DAvatar 
-              petType={pet.petType as "cat" | "dog"} 
-              gender={pet.gender as "Male" | "Female"}
-              size="lg"
-              floating={true}
-            />
-          )}
-          renderPetCard={(pet) => (
-            <PetCardHorizontal
-              key={pet.id}
-              name={pet.name}
-              gender={pet.gender}
-              age={pet.age}
-              petType={pet.petType}
-              image={<Pet3DAvatar petType={pet.petType as "cat" | "dog"} gender={pet.gender as "Male" | "Female"} size="lg" floating={true} />}
-              onClick={() => navigate(`/pet-care?pet=${pet.name}`)}
-              className="mr-2"
-            />
-          )}
+          renderPetImage={(pet) => {
+            // Use the dedicated Cat Avatar for cats
+            if (pet.petType.toLowerCase() === "cat") {
+              return (
+                <CatAvatar 
+                  gender={pet.gender as "Male" | "Female"}
+                  size="lg"
+                  floating={true}
+                />
+              );
+            }
+            
+            // Use DogAvatar for dogs
+            return (
+              <DogAvatar 
+                gender={pet.gender as "Male" | "Female"}
+                size="lg"
+                floating={true}
+              />
+            );
+          }}
+          renderPetCard={(pet) => {
+            // Use the dedicated Cat Avatar for cats
+            const petImage = pet.petType.toLowerCase() === "cat" 
+              ? (
+                <CatAvatar 
+                  gender={pet.gender as "Male" | "Female"}
+                  size="lg"
+                  floating={true}
+                />
+              ) 
+              : (
+                <DogAvatar 
+                  gender={pet.gender as "Male" | "Female"}
+                  size="lg"
+                  floating={true} 
+                />
+              );
+            
+            return (
+              <PetCardHorizontal
+                key={pet.id}
+                name={pet.name}
+                gender={pet.gender}
+                age={pet.age}
+                petType={pet.petType}
+                image={petImage}
+                onClick={() => navigate(`/pet-care?pet=${pet.name}`)}
+                className="mr-2"
+              />
+            );
+          }}
         />
 
         {/* Journal Section */}

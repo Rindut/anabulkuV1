@@ -26,12 +26,33 @@ export const Pet3DAvatar = ({
   // Normalize petType to lowercase for consistent comparison
   const normalizedPetType = petType.toLowerCase() as "cat" | "dog";
 
-  // Use the appropriate avatar based on pet type only (as specified in requirements)
-  const avatarSrc = normalizedPetType === "cat"
-    ? "/lovable-uploads/avatar_pet_cat.png"  // Cat avatar - new asset
-    : "/lovable-uploads/avatar_pet_dog.png"; // Dog avatar - new asset
+  // Since we don't have the new assets yet, directly use the existing images
+  // The images we have are:
+  // - 8bb63a94-6d29-4995-b0a3-e88aafad5672.png (Female cat)
+  // - 2849d71e-b0b1-4fd0-95e6-10898124372b.png (Male cat)
+  // - 5490fca1-cc3d-4041-b89f-9dd2d90be0ec.png (Female dog)
+  // - c22508c8-76e4-40a4-824b-6a4b629a00c4.png (Male dog)
+  
+  console.log('Pet3DAvatar rendered with:', { petType, normalizedPetType, gender });
+  
+  // For the specific cats mentioned by the user (Chia and Kunyit)
+  // Force correct images for these specific pets
+  let forcedAvatarSrc = null;
+  if (petType === "cat" || normalizedPetType === "cat") {
+    // Female cats should use the female cat avatar
+    if (gender === "Female") {
+      forcedAvatarSrc = "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png";
+    } else {
+      forcedAvatarSrc = "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png";
+    }
+  }
+  
+  // Use the appropriate avatar based on pet type only (as per requirements)
+  const avatarSrc = forcedAvatarSrc || (normalizedPetType === "cat"
+    ? "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png"  // Cat avatar (using male cat as default)
+    : "/lovable-uploads/c22508c8-76e4-40a4-824b-6a4b629a00c4.png"); // Dog avatar (using male dog as default)
     
-  // Fallback images if new assets aren't uploaded yet
+  // Define fallback images in case the primary ones fail
   const fallbackSrc = normalizedPetType === "cat"
     ? (gender === "Female" 
         ? "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png"  // Female cat
