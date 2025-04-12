@@ -113,8 +113,11 @@ const PetCare = () => {
                       <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mr-3 shadow-sm">
                         <Check className="w-5 h-5 text-amber-400" />
                       </div>
-                      <span className="text-[11px] font-poppins text-[#FFDEC1]">
-                        [{activity.petName}] {activity.type}
+                      <span className="inline-block px-4 py-1 mr-2 text-[11px] font-poppins text-black bg-white rounded-3xl border border-petapp-orange/70">
+                        {activity.petName}
+                      </span>
+                      <span className="text-[14px] font-poppins text-[#5C5C5C]">
+                        {activity.type}
                       </span>
                     </div>
                   ))}
