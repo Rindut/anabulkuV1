@@ -16,19 +16,18 @@ export const Parent3DAvatar = ({
 }: Parent3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-16 w-16",
-    md: "h-[8.5rem] w-[8.5rem]",  // Increased size to make more hair extend outside
+    md: "h-[8.5rem] w-[8.5rem]",
     lg: "h-32 w-32",
   };
 
-  // Use the appropriate avatar based on gender
   const avatarSrc = gender === "Female" 
-    ? "/lovable-uploads/219f256f-b5cc-4690-bc72-e88aeca5f0a9.png"  // Female parent avatar
-    : "/lovable-uploads/125f7b15-7adc-436d-874d-7488ebd8507e.png";  // Male parent avatar
+    ? "/lovable-uploads/219f256f-b5cc-4690-bc72-e88aeca5f0a9.png"
+    : "/lovable-uploads/125f7b15-7adc-436d-874d-7488ebd8507e.png";
 
   return (
     <div className={cn(
       sizeClasses[size],
-      "flex items-end justify-center relative", 
+      "flex items-center justify-center relative overflow-hidden", 
       floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]",
       className
     )}>
@@ -36,10 +35,13 @@ export const Parent3DAvatar = ({
         src={avatarSrc} 
         alt={`${gender} Parent Avatar`}
         className={cn(
-          "w-full h-full object-cover object-bottom",
-          floating && "absolute bottom-0 h-[130%]" 
+          "w-full object-cover object-bottom",
+          floating && "absolute bottom-0 h-[120%] max-w-none" 
         )}
-        style={{ objectPosition: 'bottom' }}
+        style={{ 
+          objectPosition: 'bottom',
+          transform: floating ? 'translateY(10%)' : undefined
+        }}
         onError={(e) => {
           e.currentTarget.onerror = null;
           e.currentTarget.nextSibling!.textContent = "Avatar not available";
