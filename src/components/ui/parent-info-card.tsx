@@ -24,7 +24,7 @@ export const ParentInfoCard = ({
       )}
     >
       {/* Avatar Container with larger size to extend outside */}
-      <div className="z-[1] mr-6 -mt-8 -ml-1 flex items-end">
+      <div className="z-[1] mr-6 -mt-8 -ml-1 flex items-end pawrent-avatar relative top-[30px] -mb-[30px]">
         {avatar}
       </div>
       
