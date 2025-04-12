@@ -104,16 +104,16 @@ const PetCare = () => {
               <div key={dateGroup.id} className="space-y-1">
                 <h2 className="text-[15px] font-poppins text-black mb-4">{dateGroup.date}</h2>
                 
-                <div className="bg-petapp-pawrentBox rounded-3xl p-5 space-y-6">
+                <div className="bg-petapp-pawrentBox rounded-3xl p-3 space-y-4">
                   {dateGroup.activities.map((activity) => (
                     <div 
                       key={activity.id} 
                       className="flex items-center"
                     >
-                      <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4 shadow-sm">
-                        <Check className="w-6 h-6 text-amber-400" />
+                      <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mr-3 shadow-sm">
+                        <Check className="w-5 h-5 text-amber-400" />
                       </div>
-                      <span className="text-[12px] font-poppins text-black">
+                      <span className="text-[11px] font-poppins text-[#FFDEC1]">
                         [{activity.petName}] {activity.type}
                       </span>
                     </div>
