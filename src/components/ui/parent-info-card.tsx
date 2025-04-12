@@ -19,16 +19,16 @@ export const ParentInfoCard = ({
     <div 
       className={cn(
         "bg-[#D9EBE7]/60 rounded-xl p-3 flex items-start",
-        "shadow-sm relative pt-14 mt-8", // Added padding and margin to accommodate floating avatar
+        "shadow-sm", // Removed the extra top padding and margin
         className
       )}
     >
-      {/* Avatar Container with floating effect */}
-      <div className="absolute -top-8 left-4 z-[1]">
+      {/* Avatar Container positioned normally (not floating) */}
+      <div className="z-[1] mr-4">
         {avatar}
       </div>
       
-      <div className="ml-24 flex-1 flex flex-col mt-2"> {/* Added small top margin for perfect alignment with avatar */}
+      <div className="flex-1 flex flex-col"> {/* Removed extra left margin and top margin */}
         <div className="text-black text-[12px] font-poppins">Pawrent's Name</div>
         <div className="text-[15px] font-poppins text-black mb-2">{name}</div>
         
