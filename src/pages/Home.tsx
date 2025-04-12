@@ -14,6 +14,8 @@ const mockPets = [
   { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "dog" },
   { id: 2, name: "Oreo", gender: "Male", age: 1, petType: "dog" },
   { id: 3, name: "Choco", gender: "Female", age: 2, petType: "cat" },
+  { id: 4, name: "Milo", gender: "Male", age: 2, petType: "dog" },
+  { id: 5, name: "Luna", gender: "Female", age: 1, petType: "cat" },
 ];
 
 const Home = () => {
@@ -42,14 +44,14 @@ const Home = () => {
           <p className="text-[15px] text-gray-500 font-rubik">Your pet family information</p>
         </header>
 
-        <p className="text-[15px] font-bold text-black font-poppins mb-6">{greeting}, {parentName}!</p>
+        <p className="text-[32px] font-bold text-black font-poppins mb-8">{greeting}, {parentName}!</p>
 
         {/* Parent Profile Card */}
         <ParentInfoCard
           name={parentName}
           avatar={<Parent3DAvatar size="md" gender={parentGender} floating={true} />}
           petCount={mockPets.length}
-          className="mb-5"
+          className="mb-8"
         />
 
         {/* Pets Section */}
