@@ -16,8 +16,8 @@ export const Parent3DAvatar = ({
 }: Parent3DAvatarProps) => {
   const sizeClasses = {
     sm: "h-16 w-16",
-    md: "h-36 w-36",  // Increased size to match the image
-    lg: "h-40 w-40",
+    md: "h-20 w-20",  // Adjusted to match the 80px request for medium size
+    lg: "h-32 w-32",
   };
 
   // Use the appropriate avatar based on gender
@@ -29,13 +29,13 @@ export const Parent3DAvatar = ({
     <div className={cn(
       sizeClasses[size],
       "flex items-center justify-center",
-      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]", // Enhanced shadow
+      floating && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] scale-110", // Enhanced shadow and slightly larger when floating
       className
     )}>
       <img 
         src={avatarSrc} 
         alt={`${gender} Parent Avatar`}
-        className="h-full w-full object-contain scale-125 -ml-2" // Scale up slightly and adjust position
+        className="h-full object-contain"
         onError={(e) => {
           e.currentTarget.onerror = null;
           e.currentTarget.nextSibling!.textContent = "Avatar not available";
