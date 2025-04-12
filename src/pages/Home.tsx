@@ -50,9 +50,12 @@ const Home = () => {
           name={parentName}
           avatar={<Parent3DAvatar size="md" gender={parentGender} floating={true} />}
           petCount={mockPets.length}
-          className="mb-0"
+          className="mb-5"
         />
 
+        {/* Pets Section */}
+        <h2 className="text-[15px] font-bold text-black font-poppins mb-3 mt-8">Hello, Kids!</h2>
+        
         {/* Horizontal scrollable pet list */}
         <HorizontalPetList 
           pets={mockPets}
