@@ -26,7 +26,7 @@ const PetCreated = () => {
           <img 
             src="/lovable-uploads/87cc266f-0d21-47fc-9c24-6c582fe94a42.png" 
             alt="Happy family with pets"
-            className="w-full object-contain" 
+            className="w-full aspect-auto object-cover" 
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEyIDEyQzEyIDEyIDEyIDEyIDEyIDEyQzEyIDEyIDEyIDEyIDEyIDEyWiIgZmlsbD0icmVkIi8+PC9zdmc+";
