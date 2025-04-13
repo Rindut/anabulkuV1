@@ -26,21 +26,9 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col p-6 bg-white">
-      {/* Status bar mockup */}
-      <div className="flex justify-between text-xs text-gray-500 mb-4">
-        <span>00:00</span>
-        <div className="flex items-center gap-1">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 10C18 13.3137 15.3137 16 12 16C8.68629 16 6 13.3137 6 10C6 6.68629 8.68629 4 12 4C15.3137 4 18 6.68629 18 10Z" fill="currentColor"/>
-          </svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5Z" fill="currentColor"/>
-          </svg>
-        </div>
-      </div>
+    <div className="min-h-screen flex flex-col p-4 sm:p-6 bg-white">
 
-      <div className="text-center mb-6">
+      <div className="text-center mt-4 mb-6">
         <h1 className="text-2xl font-bold mb-1 text-[#304352]">SIGN IN</h1>
         <p className="text-gray-500 text-sm">Enter your credentials to access your account</p>
       </div>
