@@ -17,13 +17,13 @@ const Settings = () => {
       items: [
         { 
           label: "Pawrent", 
-          icon: HelpCircle, 
+          icon: HelpCircle, // This is the question mark icon
           path: "/pawrent",
           iconBackground: "bg-green-50" 
         },
         { 
           label: "Pets", 
-          icon: Info, 
+          icon: Info, // This is the info icon
           path: "/pets",
           iconBackground: "bg-green-50" 
         }
@@ -34,13 +34,15 @@ const Settings = () => {
       items: [
         { 
           label: "Help Center", 
-          icon: HelpCircle, 
-          path: "/help-center" 
+          icon: HelpCircle, // This is the question mark icon
+          path: "/help-center",
+          iconBackground: "bg-green-50"
         },
         { 
           label: "About", 
-          icon: Info, 
-          path: "/about" 
+          icon: Info, // This is the info icon
+          path: "/about",
+          iconBackground: "bg-green-50"
         }
       ]
     }

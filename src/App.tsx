@@ -21,6 +21,11 @@ import PetCare from "./pages/PetCare";
 import AddRecord from "./pages/AddRecord";
 import Journal from "./pages/Journal";
 import Settings from "./pages/Settings";
+import Pawrent from "./pages/Pawrent";
+import Pets from "./pages/Pets";
+import AddPet from "./pages/AddPet";
+import HelpCenter from "./pages/HelpCenter";
+import About from "./pages/About";
 
 const queryClient = new QueryClient();
 
@@ -49,10 +54,11 @@ const App = () => (
           <Route path="/settings" element={<Settings />} />
           
           {/* Settings Related Routes */}
-          <Route path="/pawrent" element={<NotFound />} />
-          <Route path="/pets" element={<NotFound />} />
-          <Route path="/help-center" element={<NotFound />} />
-          <Route path="/about" element={<NotFound />} />
+          <Route path="/pawrent" element={<Pawrent />} />
+          <Route path="/pets" element={<Pets />} />
+          <Route path="/add-pet" element={<AddPet />} />
+          <Route path="/help-center" element={<HelpCenter />} />
+          <Route path="/about" element={<About />} />
           <Route path="/logout" element={<SignIn />} />
           
           {/* Catch-all Route */}
