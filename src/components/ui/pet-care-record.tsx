@@ -1,5 +1,5 @@
 
-import { LucideIcon, Home, Scissors, Syringe, Stethoscope, XCircle } from "lucide-react";
+import { LucideIcon, Home, Scissors, Syringe, Stethoscope, HeartPulse } from "lucide-react";
 import { format } from "date-fns";
 
 interface PetCareRecord {
@@ -13,13 +13,13 @@ interface PetCareRecord {
   createdAt: string;
 }
 
-// Map of care type values to their respective icons
+// Map of care type values to their respective icons (matching the AddRecord page)
 const careTypeIcons: Record<string, LucideIcon> = {
   "pethotel": Home,
   "grooming": Scissors,
   "vaccine": Syringe,
   "vet": Stethoscope,
-  "sterilization": XCircle,
+  "sterilization": HeartPulse,
 };
 
 interface PetCareRecordProps {

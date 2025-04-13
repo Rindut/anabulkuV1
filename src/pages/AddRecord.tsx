@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronDown, Home, Scissors, Syringe, Stethoscope, XCircle } from "lucide-react";
+import { ChevronDown, Home, Scissors, Syringe, Stethoscope, HeartPulse } from "lucide-react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { InputCustom } from "@/components/ui/input-custom";
 import { DatePicker } from "@/components/ui/date-picker";
@@ -21,7 +21,7 @@ const careTypes = [
   { value: "grooming", label: "Grooming", icon: Scissors },
   { value: "vaccine", label: "Vaccine", icon: Syringe },
   { value: "vet", label: "Vet Visit", icon: Stethoscope },
-  { value: "sterilization", label: "Sterilization", icon: XCircle },
+  { value: "sterilization", label: "Sterilization", icon: HeartPulse },
 ];
 
 const AddRecord = () => {
@@ -49,7 +49,7 @@ const AddRecord = () => {
       notes,
     });
 
-    // Save to localStorage for display in Journal
+    // Save to localStorage for display in Pet Care page
     const existingRecords = JSON.parse(localStorage.getItem('petCareRecords') || '[]');
     const newRecord = {
       id: Date.now(),
@@ -64,10 +64,10 @@ const AddRecord = () => {
     
     localStorage.setItem('petCareRecords', JSON.stringify([...existingRecords, newRecord]));
     
-    // Show success message and navigate back after a short delay
+    // Show success message and navigate to Pet Care page
     alert("Record saved!");
     setTimeout(() => {
-      navigate(-1); // Go back to the previous screen
+      navigate("/pet-care"); // Navigate to the pet care page to see the record
     }, 500);
   };
 
