@@ -1,87 +1,85 @@
 
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { 
-  User, 
-  Bell, 
-  Lock, 
   HelpCircle, 
   Info, 
   LogOut, 
-  ChevronRight 
+  ChevronRight
 } from "lucide-react";
 
 const Settings = () => {
-  const [notifications, setNotifications] = useState(true);
+  const navigate = useNavigate();
 
   const settingsGroups = [
     {
-      title: "Account",
+      title: "Pet Family",
       items: [
-        { label: "Profile", icon: User, path: "/profile" },
-        { label: "Notifications", icon: Bell, path: "/notifications", toggle: true, toggled: notifications },
-        { label: "Privacy & Security", icon: Lock, path: "/privacy" }
+        { 
+          label: "Pawrent", 
+          icon: HelpCircle, 
+          path: "/pawrent",
+          iconBackground: "bg-green-50" 
+        },
+        { 
+          label: "Pets", 
+          icon: Info, 
+          path: "/pets",
+          iconBackground: "bg-green-50" 
+        }
       ]
     },
     {
       title: "Support",
       items: [
-        { label: "Help Center", icon: HelpCircle, path: "/help" },
-        { label: "About", icon: Info, path: "/about" }
+        { 
+          label: "Help Center", 
+          icon: HelpCircle, 
+          path: "/help-center" 
+        },
+        { 
+          label: "About", 
+          icon: Info, 
+          path: "/about" 
+        }
       ]
     }
   ];
 
-  const handleToggle = (setting: string) => {
-    if (setting === "Notifications") {
-      setNotifications(!notifications);
-    }
+  const handleNavigation = (path: string) => {
+    navigate(path);
   };
 
   return (
     <MainLayout>
-      <div className="p-6 pb-24">
+      <div className="p-6 pb-24 bg-gray-50">
         {/* Header */}
-        <header className="mb-8">
-          <h1 className="text-5xl font-bold text-gray-900">SETTINGS</h1>
-          <p className="text-xl text-gray-400">Manage your app preferences</p>
+        <header className="mb-10">
+          <h1 className="text-[36px] font-bold font-rubik text-black tracking-tight">SETTINGS</h1>
+          <p className="text-[15px] font-rubik text-gray-400 mt-1">Manage your apps preferences</p>
         </header>
 
         {/* Settings Groups */}
         <div className="space-y-8">
           {settingsGroups.map((group) => (
             <div key={group.title} className="space-y-3">
-              <h2 className="text-lg font-semibold text-gray-700">{group.title}</h2>
+              <h2 className="text-lg font-semibold text-gray-800 font-rubik">{group.title}</h2>
               <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
                 {group.items.map((item, index) => (
                   <div 
                     key={item.label}
-                    className={`p-4 flex items-center justify-between ${
+                    className={`p-4 flex items-center justify-between cursor-pointer ${
                       index !== group.items.length - 1 ? "border-b border-gray-100" : ""
                     }`}
+                    onClick={() => handleNavigation(item.path)}
                   >
                     <div className="flex items-center space-x-3">
-                      <div className="p-2 bg-petapp-mint bg-opacity-20 rounded-full">
-                        <item.icon className="text-petapp-green h-5 w-5" />
+                      <div className={`p-2 ${item.iconBackground || "bg-green-50"} rounded-full`}>
+                        <item.icon className="text-green-400 h-5 w-5" />
                       </div>
-                      <span className="font-medium text-gray-800">{item.label}</span>
+                      <span className="font-medium text-gray-800 font-rubik">{item.label}</span>
                     </div>
-                    {item.toggle ? (
-                      <button 
-                        onClick={() => handleToggle(item.label)}
-                        className={`w-12 h-6 rounded-full relative ${
-                          item.toggled ? "bg-petapp-green" : "bg-gray-300"
-                        }`}
-                      >
-                        <span 
-                          className={`absolute top-1 transition-all w-4 h-4 rounded-full bg-white ${
-                            item.toggled ? "left-7" : "left-1"
-                          }`} 
-                        />
-                      </button>
-                    ) : (
-                      <ChevronRight className="h-5 w-5 text-gray-400" />
-                    )}
+                    <ChevronRight className="h-5 w-5 text-gray-400" />
                   </div>
                 ))}
               </div>
@@ -90,8 +88,11 @@ const Settings = () => {
 
           {/* Logout Button */}
           <div className="pt-6">
-            <button className="w-full flex items-center justify-center space-x-2 py-4 bg-red-50 text-red-600 rounded-xl font-medium">
-              <LogOut className="h-5 w-5" />
+            <button 
+              className="w-full flex items-center justify-center space-x-2 py-4 bg-pink-50 text-red-500 rounded-xl font-medium font-rubik"
+              onClick={() => handleNavigation("/logout")}
+            >
+              <LogOut className="h-5 w-5 mr-2" />
               <span>Log Out</span>
             </button>
           </div>

@@ -48,6 +48,13 @@ const App = () => (
           <Route path="/journal" element={<Journal />} />
           <Route path="/settings" element={<Settings />} />
           
+          {/* Settings Related Routes */}
+          <Route path="/pawrent" element={<NotFound />} />
+          <Route path="/pets" element={<NotFound />} />
+          <Route path="/help-center" element={<NotFound />} />
+          <Route path="/about" element={<NotFound />} />
+          <Route path="/logout" element={<SignIn />} />
+          
           {/* Catch-all Route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
