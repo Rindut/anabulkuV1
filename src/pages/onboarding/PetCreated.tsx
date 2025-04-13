@@ -24,7 +24,7 @@ const PetCreated = () => {
         
         <div className="w-full max-w-xs mb-8">
           <img 
-            src="/lovable-uploads/81c3c494-0f56-4e8e-95b6-483f42e9ea69.png" 
+            src="/lovable-uploads/87cc266f-0d21-47fc-9c24-6c582fe94a42.png" 
             alt="Happy family with pets"
             className="w-full object-contain" 
             onError={(e) => {
