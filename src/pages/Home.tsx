@@ -45,7 +45,7 @@ const Home = () => {
           <p className="text-[15px] text-gray-500 font-rubik">Your pet family information</p>
         </header>
 
-        <p className="text-[15px] font-bold text-black font-poppins mb-6">{greeting}, {parentName}!</p>
+        <p className="text-[15px] font-bold text-black font-poppins mb-12">{greeting}, {parentName}!</p>
 
         {/* Parent Profile Card */}
         <ParentInfoCard

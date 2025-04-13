@@ -2,10 +2,14 @@
 import { useNavigate } from "react-router-dom";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { 
-  HelpCircle, 
+  HelpCircle,
   Info, 
   LogOut, 
-  ChevronRight
+  ChevronRight,
+  User,
+  Cat,
+  BookOpen,
+  AlertCircle
 } from "lucide-react";
 
 const Settings = () => {
@@ -17,13 +21,13 @@ const Settings = () => {
       items: [
         { 
           label: "Pawrent", 
-          icon: HelpCircle, // This is the question mark icon
+          icon: User, // Changed to User icon
           path: "/pawrent",
           iconBackground: "bg-green-50" 
         },
         { 
           label: "Pets", 
-          icon: Info, // This is the info icon
+          icon: Cat, // Changed to Cat icon
           path: "/pets",
           iconBackground: "bg-green-50" 
         }
@@ -34,13 +38,13 @@ const Settings = () => {
       items: [
         { 
           label: "Help Center", 
-          icon: HelpCircle, // This is the question mark icon
+          icon: BookOpen, // Changed to BookOpen icon
           path: "/help-center",
           iconBackground: "bg-green-50"
         },
         { 
           label: "About", 
-          icon: Info, // This is the info icon
+          icon: AlertCircle, // Changed to AlertCircle icon
           path: "/about",
           iconBackground: "bg-green-50"
         }

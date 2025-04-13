@@ -15,10 +15,10 @@ export const CatAvatar = ({
   floating = false
 }: CatAvatarProps) => {
   const sizeClasses = {
-    sm: "h-20 w-20",
-    md: "h-32 w-32",
-    lg: "h-40 w-40",
-    xl: "h-48 w-48",
+    sm: "h-14 w-14", // 70% smaller
+    md: "h-22 w-22", // 70% smaller
+    lg: "h-28 w-28", // 70% smaller (reduced from h-40)
+    xl: "h-34 w-34", // 70% smaller
   };
 
   // Use new gender-specific cat avatars

@@ -174,7 +174,7 @@ const Journal = () => {
               className="ml-2 p-1 rounded-full hover:bg-gray-100 disabled:opacity-50"
               title="Refresh journal"
             >
-              <RefreshCw className={`h-4 w-4 text-gray-500 ${isRefreshing ? 'animate-spin' : ''}`} />
+              <RefreshCw className={`h-4 w-4 text-white ${isRefreshing ? 'animate-spin' : ''}`} />
             </button>
           </div>
         </div>
