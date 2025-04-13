@@ -1,6 +1,7 @@
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { ChevronDown, Home, Scissors, Syringe, Stethoscope, XCircle } from "lucide-react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { InputCustom } from "@/components/ui/input-custom";
 import { DatePicker } from "@/components/ui/date-picker";
@@ -14,13 +15,13 @@ const pets = [
   { id: 4, name: "Kunyit" },
 ];
 
-// Care type options
+// Care type options with icons
 const careTypes = [
-  { value: "vet", label: "Vet Visit" },
-  { value: "grooming", label: "Grooming" },
-  { value: "deworming", label: "Deworming" },
-  { value: "vaccine", label: "Vaccine" },
-  { value: "pethotel", label: "Pet Hotel" },
+  { value: "pethotel", label: "Pet Hotel", icon: Home },
+  { value: "grooming", label: "Grooming", icon: Scissors },
+  { value: "vaccine", label: "Vaccine", icon: Syringe },
+  { value: "vet", label: "Vet Visit", icon: Stethoscope },
+  { value: "sterilization", label: "Sterilization", icon: XCircle },
 ];
 
 const AddRecord = () => {
@@ -30,17 +31,44 @@ const AddRecord = () => {
   const [recordDate, setRecordDate] = useState<Date | undefined>(undefined);
   const [notes, setNotes] = useState<string>("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Get the selected care type with icon information
+    const selectedCareTypeInfo = careTypes.find(type => type.value === selectedCareType);
+    
     // Handle form submission logic
     console.log({
       pet: selectedPet,
       careType: selectedCareType,
+      careTypeLabel: selectedCareTypeInfo?.label,
+      careTypeIcon: selectedCareTypeInfo?.icon.name,
       location,
       recordDate,
       notes,
     });
+
+    // Save to localStorage for display in Journal
+    const existingRecords = JSON.parse(localStorage.getItem('petCareRecords') || '[]');
+    const newRecord = {
+      id: Date.now(),
+      petName: selectedPet,
+      careType: selectedCareType,
+      careTypeLabel: selectedCareTypeInfo?.label,
+      location,
+      date: recordDate ? recordDate.toISOString() : new Date().toISOString(),
+      notes,
+      createdAt: new Date().toISOString()
+    };
+    
+    localStorage.setItem('petCareRecords', JSON.stringify([...existingRecords, newRecord]));
+    
+    // Show success message and navigate back after a short delay
     alert("Record saved!");
+    setTimeout(() => {
+      navigate(-1); // Go back to the previous screen
+    }, 500);
   };
 
   return (
@@ -79,7 +107,7 @@ const AddRecord = () => {
               <select
                 value={selectedCareType}
                 onChange={(e) => setSelectedCareType(e.target.value)}
-                className="h-12 w-full appearance-none rounded-lg border border-gray-200 bg-white px-3 py-2 pr-10 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-petapp-green"
+                className="h-12 w-full appearance-none rounded-lg border border-gray-200 bg-white pl-10 pr-10 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-petapp-green"
               >
                 {careTypes.map((type) => (
                   <option key={type.value} value={type.value}>
@@ -89,6 +117,15 @@ const AddRecord = () => {
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3">
                 <ChevronDown className="h-4 w-4 text-gray-400" />
+              </div>
+              
+              {/* Display selected care type icon on the left side of the select */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                {(() => {
+                  const selectedType = careTypes.find(type => type.value === selectedCareType);
+                  const Icon = selectedType?.icon || Home;
+                  return <Icon className="h-4 w-4 text-gray-500" />;
+                })()}
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { MainLayout } from "@/components/layout/MainLayout";
-import { Moon, Star, Rainbow, RefreshCw, Calendar } from "lucide-react";
+import { Moon, Star, Rainbow, RefreshCw, Calendar, ClipboardList } from "lucide-react";
 import { format } from "date-fns";
 import { 
   generateJournalEntry, 
@@ -11,13 +11,14 @@ import {
   type Pet,
   type JournalEntry 
 } from "@/utils/journalGenerator";
+import { PetCareRecord } from "@/components/ui/pet-care-record";
 
 // Mock pet data from Home.tsx
 const mockPets = [
   { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "cat" as const },
   { id: 2, name: "Oreo", gender: "Male", age: 1, petType: "dog" as const },
-  { id: 3, name: "Chia", gender: "Male", age: 4, petType: "cat" as const },
-  { id: 4, name: "Kunyit", gender: "Male", age: 5, petType: "cat" as const },
+  { id: 3, name: "Chia", gender: "Female", age: 1, petType: "cat" as const },
+  { id: 4, name: "Kunyit", gender: "Female", age: 5, petType: "dog" as const },
 ];
 
 const Journal = () => {
@@ -25,6 +26,7 @@ const Journal = () => {
   const [journalEntries, setJournalEntries] = useState<JournalEntry[]>([]);
   const [lastRefreshed, setLastRefreshed] = useState<string>("");
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [petCareRecords, setPetCareRecords] = useState<any[]>([]);
 
   // Find selected pet object
   const selectedPet = mockPets.find(pet => pet.name === selectedPetName) || mockPets[0];
@@ -35,6 +37,7 @@ const Journal = () => {
   // Initialize and check for journal refresh
   useEffect(() => {
     initializeJournals();
+    loadPetCareRecords();
 
     // Set up midnight refresh check
     const checkMidnightRefresh = () => {
@@ -52,6 +55,12 @@ const Journal = () => {
     
     return () => clearInterval(intervalId);
   }, []);
+
+  // Load pet care records from localStorage
+  const loadPetCareRecords = () => {
+    const records = JSON.parse(localStorage.getItem('petCareRecords') || '[]');
+    setPetCareRecords(records);
+  };
 
   const initializeJournals = () => {
     let entries = getJournalEntries();
@@ -154,6 +163,26 @@ const Journal = () => {
                 "{currentJournal.moodOfTheDay.description}"
               </p>
             </div>
+
+            {/* Pet Care Records */}
+            {petCareRecords.filter(record => record.petName === selectedPetName).length > 0 && (
+              <div className="space-y-3 mt-6">
+                <div className="flex items-center space-x-2">
+                  <ClipboardList className="text-green-500" size={24} />
+                  <h2 className="text-[15px] font-poppins text-black font-bold">Care Records</h2>
+                </div>
+                <div className="space-y-4">
+                  {petCareRecords
+                    .filter(record => record.petName === selectedPetName)
+                    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                    .slice(0, 3) // Show only the latest 3 records
+                    .map(record => (
+                      <PetCareRecord key={record.id} record={record} />
+                    ))
+                  }
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="p-8 text-center">
