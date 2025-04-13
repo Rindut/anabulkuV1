@@ -21,10 +21,10 @@ export const Parent3DAvatar = ({
     xl: "h-40 w-40"
   };
 
-  // Use the appropriate avatar based on gender
+  // Always use fallback images since the named assets aren't available
   const avatarSrc = gender === "Female" 
-    ? "/lovable-uploads/avatar_petowner_woman.png"  // Female parent avatar - new asset
-    : "/lovable-uploads/avatar_petowner_man.png";  // Male parent avatar - new asset
+    ? "/lovable-uploads/219f256f-b5cc-4690-bc72-e88aeca5f0a9.png"  // Female parent avatar
+    : "/lovable-uploads/125f7b15-7adc-436d-874d-7488ebd8507e.png";  // Male parent avatar
     
   // Fallback images if new assets aren't uploaded yet
   const fallbackSrc = gender === "Female" 
