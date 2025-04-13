@@ -15,8 +15,8 @@ import { JournalSection } from "@/components/ui/journal-section";
 const mockPets = [
   { id: 1, name: "Wijen", gender: "Male", age: 3, petType: "cat" },
   { id: 2, name: "Oreo", gender: "Male", age: 1, petType: "dog" },
-  { id: 5, name: "Chia", gender: "Male", age: 4, petType: "cat" },
-  { id: 6, name: "Kunyit", gender: "Male", age: 5, petType: "cat" },
+  { id: 5, name: "Chia", gender: "Female", age: 1, petType: "cat" },
+  { id: 6, name: "Kunyit", gender: "Female", age: 5, petType: "dog" },
 ];
 
 const Home = () => {
