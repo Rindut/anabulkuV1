@@ -80,8 +80,8 @@ const Settings = () => {
                     onClick={() => handleNavigation(item.path)}
                   >
                     <div className="flex items-center space-x-3">
-                      <div className={`p-2 ${item.iconBackground || "bg-green-50"} rounded-full`}>
-                        <item.icon className="text-green-400 h-5 w-5" />
+                      <div className={`p-2 bg-[#C5E6E2] rounded-full`}>
+                        <item.icon className="text-[#43978D] h-5 w-5" />
                       </div>
                       <span className="font-medium text-gray-800 font-rubik">{item.label}</span>
                     </div>

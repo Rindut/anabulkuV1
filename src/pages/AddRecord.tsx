@@ -164,8 +164,9 @@ const AddRecord = () => {
             <Textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="min-h-[200px] rounded-lg border border-gray-200 p-3 focus-visible:ring-2 focus-visible:ring-petapp-green"
+              className="min-h-[100px] rounded-lg border border-gray-200 p-3 focus-visible:ring-2 focus-visible:ring-petapp-green"
               placeholder=""
+              rows={4}
             />
           </div>
 

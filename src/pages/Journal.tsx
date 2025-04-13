@@ -169,8 +169,11 @@ const Journal = () => {
               <div className="space-y-3 mt-6">
                 <div className="flex items-center space-x-2">
                   <ClipboardList className="text-green-500" size={24} />
-                  <h2 className="text-[15px] font-poppins text-black font-bold">Care Records</h2>
+                  <h2 className="text-[15px] font-poppins text-black font-bold">Pet Care Records</h2>
                 </div>
+                <p className="text-[12px] text-gray-500 font-poppins mb-3">
+                  {selectedPetName}'s care records for the last 1 month
+                </p>
                 <div className="space-y-4">
                   {petCareRecords
                     .filter(record => record.petName === selectedPetName)

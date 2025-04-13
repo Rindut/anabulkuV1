@@ -13,12 +13,20 @@ import {
 } from "@/components/ui/select";
 import { ParentAvatar } from "@/components/avatars/ParentAvatar";
 
+// Mock data for existing parent
+const existingParent = {
+  name: "Eko",
+  gender: "Male",
+  email: "eko@example.com",
+  phone: "0812345678"
+};
+
 const Pawrent = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    relationship: ""
+    fullName: existingParent.name,
+    gender: existingParent.gender.toLowerCase(),
+    email: existingParent.email,
+    phone: existingParent.phone
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,8 +34,8 @@ const Pawrent = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleRelationshipChange = (value: string) => {
-    setFormData(prev => ({ ...prev, relationship: value }));
+  const handleGenderChange = (value: string) => {
+    setFormData(prev => ({ ...prev, gender: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -43,9 +51,10 @@ const Pawrent = () => {
         <header className="mb-8">
           <h1 className="text-[36px] font-bold font-rubik text-black tracking-tight">Pawrent Info</h1>
           
-          {/* Avatar Display (Optional) */}
-          <div className="mt-6 flex justify-center">
+          {/* Avatar Display */}
+          <div className="mt-6 flex flex-col items-center">
             <ParentAvatar size="lg" />
+            <h2 className="text-xl font-medium mt-3 font-poppins">{existingParent.name}</h2>
           </div>
         </header>
 
@@ -58,6 +67,23 @@ const Pawrent = () => {
             onChange={handleInputChange}
             placeholder="Enter your full name"
           />
+
+          <div className="w-full">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Gender
+            </label>
+            <Select onValueChange={handleGenderChange} value={formData.gender}>
+              <SelectTrigger className="h-12 rounded-lg">
+                <SelectValue placeholder="Select gender" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="male">Male</SelectItem>
+                  <SelectItem value="female">Female</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
 
           <InputCustom
             label="Email"
@@ -77,30 +103,11 @@ const Pawrent = () => {
             placeholder="Enter your phone number"
           />
 
-          <div className="w-full">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Relationship to Pet
-            </label>
-            <Select onValueChange={handleRelationshipChange} value={formData.relationship}>
-              <SelectTrigger className="h-12 rounded-lg">
-                <SelectValue placeholder="Select relationship" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="Owner">Owner</SelectItem>
-                  <SelectItem value="Family">Family</SelectItem>
-                  <SelectItem value="Friend">Friend</SelectItem>
-                  <SelectItem value="Other">Other</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
-
           {/* Save Button */}
           <div className="pt-6">
             <ButtonCustom 
               type="submit" 
-              className="w-full bg-blue-500 hover:bg-blue-600"
+              className="w-full bg-petapp-teal text-white font-bold rounded-lg"
               fullWidth
             >
               Save Changes

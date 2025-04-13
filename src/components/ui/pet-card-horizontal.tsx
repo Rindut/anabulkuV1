@@ -37,7 +37,7 @@ export const PetCardHorizontal = ({
         {image}
       </div>
       
-      <div className="text-center w-full mt-3">
+      <div className="text-center w-full mt-1">
         <h3 className="text-lg font-bold text-petapp-text-strong mb-1">{name}</h3>
         <p className="text-petapp-text-neutral text-sm font-medium">
           {age} yo {gender.toLowerCase()} {petType}
