@@ -1,6 +1,7 @@
 
 import { useNavigate } from "react-router-dom";
 import { MainLayout } from "@/components/layout/MainLayout";
+import { useAuth } from "@/context/AuthContext";
 import { 
   HelpCircle,
   Info, 
@@ -52,8 +53,14 @@ const Settings = () => {
     }
   ];
 
+  const { signOut } = useAuth();
+
   const handleNavigation = (path: string) => {
-    navigate(path);
+    if (path === "/logout") {
+      signOut();
+    } else {
+      navigate(path);
+    }
   };
 
   return (
