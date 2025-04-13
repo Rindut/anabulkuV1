@@ -23,13 +23,13 @@ export const Parent3DAvatar = ({
 
   // Use the appropriate avatar based on gender
   const avatarSrc = gender === "Female" 
-    ? "/lovable-uploads/avatar_petowner_woman.png"  // Female parent avatar - new asset
-    : "/lovable-uploads/avatar_petowner_man.png";  // Male parent avatar - new asset
+    ? "/lovable-uploads/bb8117e8-508a-411c-b8bc-36be54652c2e.png"  // Female parent avatar
+    : "/lovable-uploads/2ead3c6c-ebb4-40a2-8b9d-71a2da6f9680.png";  // Male parent avatar
     
   // Fallback images if new assets aren't uploaded yet
   const fallbackSrc = gender === "Female" 
-    ? "/lovable-uploads/219f256f-b5cc-4690-bc72-e88aeca5f0a9.png"  
-    : "/lovable-uploads/125f7b15-7adc-436d-874d-7488ebd8507e.png";
+    ? "/lovable-uploads/bb8117e8-508a-411c-b8bc-36be54652c2e.png"  
+    : "/lovable-uploads/2ead3c6c-ebb4-40a2-8b9d-71a2da6f9680.png";
 
   return (
     <div className={cn(
