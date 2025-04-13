@@ -151,6 +151,7 @@ export type Database = {
           gender: string | null
           id: string
           name: string
+          onboarding_completed: boolean | null
           phone: string | null
           updated_at: string
         }
@@ -160,6 +161,7 @@ export type Database = {
           gender?: string | null
           id: string
           name: string
+          onboarding_completed?: boolean | null
           phone?: string | null
           updated_at?: string
         }
@@ -169,6 +171,7 @@ export type Database = {
           gender?: string | null
           id?: string
           name?: string
+          onboarding_completed?: boolean | null
           phone?: string | null
           updated_at?: string
         }

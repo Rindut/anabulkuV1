@@ -2,9 +2,18 @@
 import { useNavigate } from "react-router-dom";
 import { ButtonCustom } from "@/components/ui/button-custom";
 import { ArrowLeft } from "lucide-react";
+import { useProfile } from "@/hooks/useProfile";
+import { useEffect } from "react";
 
 const PetCreated = () => {
   const navigate = useNavigate();
+  const { completeOnboarding } = useProfile();
+  
+  const handleGoHome = async () => {
+    // Mark onboarding as complete and navigate to home
+    await completeOnboarding();
+    navigate("/");
+  };
   
   return (
     <div className="min-h-screen flex flex-col p-4 sm:p-6 bg-white">
@@ -35,7 +44,7 @@ const PetCreated = () => {
         </div>
 
         <ButtonCustom 
-          onClick={() => navigate("/")}
+          onClick={handleGoHome}
           size="lg"
           fullWidth
           className="max-w-xs rounded-lg bg-petapp-green text-white"

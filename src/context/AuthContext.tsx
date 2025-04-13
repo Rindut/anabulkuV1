@@ -28,6 +28,34 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+  // Check if the user has completed onboarding and redirect accordingly
+  const checkOnboardingStatus = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("onboarding_completed")
+        .eq("id", userId)
+        .single();
+
+      if (error) {
+        console.error("Error checking onboarding status:", error);
+        return;
+      }
+
+      // If onboarding is not completed, redirect to onboarding flow
+      if (!data.onboarding_completed) {
+        navigate("/onboarding/welcome");
+      } else {
+        // If onboarding is completed, redirect to homepage
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error in checkOnboardingStatus:", error);
+      // Default to onboarding if there's an error
+      navigate("/onboarding/welcome");
+    }
+  };
+
   useEffect(() => {
     // Check active session
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -38,10 +66,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      async (event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
+
+        // If this is a new sign-in event, check onboarding status
+        if (event === 'SIGNED_IN' && session?.user) {
+          // Use setTimeout to avoid blocking the auth state change
+          setTimeout(() => {
+            checkOnboardingStatus(session.user.id);
+          }, 0);
+        }
       }
     );
 
@@ -55,7 +91,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     });
     
     if (!error && data?.session) {
-      navigate('/');
+      // For password sign-in, let the onAuthStateChange handler above handle redirection
     }
     
     return { data: data?.session, error };
@@ -71,6 +107,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     });
     
     if (!error && data?.session) {
+      // For new sign-ups, always go to onboarding
       navigate('/onboarding/welcome');
     }
     
@@ -88,6 +125,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (error) {
       console.error("Error signing in with Google:", error);
     }
+    // Redirection will be handled by the onAuthStateChange listener after successful auth
   };
 
   const signOut = async () => {

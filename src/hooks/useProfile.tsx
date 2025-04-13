@@ -10,6 +10,7 @@ export type Profile = {
   gender?: string;
   email?: string;
   phone?: string;
+  onboarding_completed?: boolean;
   created_at: string;
   updated_at: string;
 };
@@ -85,10 +86,15 @@ export function useProfile() {
     }
   }
 
+  async function completeOnboarding() {
+    return updateProfile({ onboarding_completed: true });
+  }
+
   return {
     profile,
     loading,
     fetchProfile,
     updateProfile,
+    completeOnboarding,
   };
 }

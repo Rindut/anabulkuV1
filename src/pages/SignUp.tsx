@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ButtonCustom } from "@/components/ui/button-custom";
 import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
+import { AuthRedirect } from "@/components/AuthRedirect";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen flex flex-col p-4 sm:p-6 bg-white">
+      <AuthRedirect />
 
       <div className="text-center mt-4 mb-6">
         <h1 className="text-2xl font-bold mb-1 text-[#304352]">SIGN UP</h1>
