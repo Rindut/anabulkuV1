@@ -35,23 +35,31 @@ export const Pet3DAvatar = ({
   
   console.log('Pet3DAvatar rendered with:', { petType, normalizedPetType, gender });
   
-  // Use the appropriate avatar based on pet type and gender
-  const avatarSrc = normalizedPetType === "cat"
-    ? (gender === "Female" 
-        ? "/lovable-uploads/b8226aef-a13f-4a35-bada-135f83ae2048.png"  // Female cat
-        : "/lovable-uploads/e7900b6a-5622-42d2-baca-790be1ec9676.png") // Male cat
-    : (gender === "Female"
-        ? "/lovable-uploads/fdfeeb31-74a9-49e0-af89-ec9a81f063bd.png"  // Female dog
-        : "/lovable-uploads/bff0fe33-19ca-41db-88ce-700b66f66bbe.png"); // Male dog
+  // For the specific cats mentioned by the user (Chia and Kunyit)
+  // Force correct images for these specific pets
+  let forcedAvatarSrc = null;
+  if (petType === "cat" || normalizedPetType === "cat") {
+    // Female cats should use the female cat avatar
+    if (gender === "Female") {
+      forcedAvatarSrc = "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png";
+    } else {
+      forcedAvatarSrc = "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png";
+    }
+  }
+  
+  // Use the appropriate avatar based on pet type only (as per requirements)
+  const avatarSrc = forcedAvatarSrc || (normalizedPetType === "cat"
+    ? "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png"  // Cat avatar (using male cat as default)
+    : "/lovable-uploads/c22508c8-76e4-40a4-824b-6a4b629a00c4.png"); // Dog avatar (using male dog as default)
     
   // Define fallback images in case the primary ones fail
   const fallbackSrc = normalizedPetType === "cat"
     ? (gender === "Female" 
-        ? "/lovable-uploads/b8226aef-a13f-4a35-bada-135f83ae2048.png"  // Female cat
-        : "/lovable-uploads/e7900b6a-5622-42d2-baca-790be1ec9676.png") // Male cat
+        ? "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png"  // Female cat
+        : "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png") // Male cat
     : (gender === "Female"
-        ? "/lovable-uploads/fdfeeb31-74a9-49e0-af89-ec9a81f063bd.png"  // Female dog
-        : "/lovable-uploads/bff0fe33-19ca-41db-88ce-700b66f66bbe.png"); // Male dog
+        ? "/lovable-uploads/5490fca1-cc3d-4041-b89f-9dd2d90be0ec.png"  // Female dog
+        : "/lovable-uploads/c22508c8-76e4-40a4-824b-6a4b629a00c4.png"); // Male dog
 
   return (
     <div className={cn(

@@ -15,7 +15,7 @@ const Welcome = () => {
         
         <div className="w-full max-w-xs mb-6">
           <img 
-            src="/lovable-uploads/8a1fae44-56a0-48e7-944c-e7c3a064c58d.png" 
+            src="/lovable-uploads/81c3c494-0f56-4e8e-95b6-483f42e9ea69.png" 
             alt="Happy family with pets"
             className="w-full object-contain" 
             onError={(e) => {

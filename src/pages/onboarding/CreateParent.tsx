@@ -62,7 +62,7 @@ const CreateParent = () => {
             >
               <div className="w-24 h-36 bg-white border rounded-lg p-1 flex items-center justify-center">
                 <img 
-                  src="/lovable-uploads/bb8117e8-508a-411c-b8bc-36be54652c2e.png" 
+                  src="/lovable-uploads/81c3c494-0f56-4e8e-95b6-483f42e9ea69.png" 
                   alt="Female avatar"
                   className="h-32 object-contain" 
                   onError={(e) => {
@@ -81,7 +81,7 @@ const CreateParent = () => {
             >
               <div className="w-24 h-36 bg-white border rounded-lg p-1 flex items-center justify-center">
                 <img 
-                  src="/lovable-uploads/2ead3c6c-ebb4-40a2-8b9d-71a2da6f9680.png" 
+                  src="/lovable-uploads/81c3c494-0f56-4e8e-95b6-483f42e9ea69.png" 
                   alt="Male avatar"
                   className="h-32 object-contain" 
                   onError={(e) => {
