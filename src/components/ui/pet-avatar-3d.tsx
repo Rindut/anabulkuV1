@@ -24,11 +24,11 @@ export const PetAvatar3D = ({
   // Normalize petType to lowercase for consistent comparison
   const normalizedPetType = petType.toLowerCase() as "cat" | "dog";
 
-  // Use the existing images directly (using the UUIDs)
-  // - 8bb63a94-6d29-4995-b0a3-e88aafad5672.png (Female cat)
-  // - 2849d71e-b0b1-4fd0-95e6-10898124372b.png (Male cat)
-  // - 5490fca1-cc3d-4041-b89f-9dd2d90be0ec.png (Female dog)
-  // - c22508c8-76e4-40a4-824b-6a4b629a00c4.png (Male dog)
+  // Using the new assets provided by the user:
+  // - f30f5de4-ad57-4373-9e61-ae7bc0bb6b7e.png (Female cat)
+  // - a38b8e7b-a267-4de5-bca5-4e8d3a67a542.png (Male cat)
+  // - 8ff221f5-6b20-42db-8af6-3efa83db08e4.png (Female dog)
+  // - 6db4f94e-6f10-4087-bc7b-fc4184ee3857.png (Male dog)
   
   // Convert gender format for consistency
   const mappedGender = gender === "male" ? "Male" : "Female";
@@ -36,20 +36,20 @@ export const PetAvatar3D = ({
   // Use the appropriate avatar based on pet type and gender
   const avatarSrc = normalizedPetType === "cat"
     ? (mappedGender === "Female" 
-        ? "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png"  // Female cat
-        : "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png") // Male cat
+        ? "/lovable-uploads/f30f5de4-ad57-4373-9e61-ae7bc0bb6b7e.png"  // Female cat
+        : "/lovable-uploads/a38b8e7b-a267-4de5-bca5-4e8d3a67a542.png") // Male cat
     : (mappedGender === "Female"
-        ? "/lovable-uploads/5490fca1-cc3d-4041-b89f-9dd2d90be0ec.png"  // Female dog
-        : "/lovable-uploads/c22508c8-76e4-40a4-824b-6a4b629a00c4.png"); // Male dog
+        ? "/lovable-uploads/8ff221f5-6b20-42db-8af6-3efa83db08e4.png"  // Female dog
+        : "/lovable-uploads/6db4f94e-6f10-4087-bc7b-fc4184ee3857.png"); // Male dog
     
-  // Define fallback images in case the primary ones fail
+  // Define fallback images in case the primary ones fail (same as primary)
   const fallbackSrc = normalizedPetType === "cat"
     ? (mappedGender === "Female" 
-        ? "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png"  // Female cat
-        : "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png") // Male cat
+        ? "/lovable-uploads/f30f5de4-ad57-4373-9e61-ae7bc0bb6b7e.png"  // Female cat
+        : "/lovable-uploads/a38b8e7b-a267-4de5-bca5-4e8d3a67a542.png") // Male cat
     : (mappedGender === "Female"
-        ? "/lovable-uploads/5490fca1-cc3d-4041-b89f-9dd2d90be0ec.png"  // Female dog
-        : "/lovable-uploads/c22508c8-76e4-40a4-824b-6a4b629a00c4.png"); // Male dog
+        ? "/lovable-uploads/8ff221f5-6b20-42db-8af6-3efa83db08e4.png"  // Female dog
+        : "/lovable-uploads/6db4f94e-6f10-4087-bc7b-fc4184ee3857.png"); // Male dog
 
   return (
     <div className={cn(

@@ -21,10 +21,10 @@ export const CatAvatar = ({
     xl: "h-48 w-48",
   };
 
-  // Use correct gender-specific cat avatar
+  // Use new gender-specific cat avatars
   const avatarSrc = gender === "Female"
-    ? "/lovable-uploads/8bb63a94-6d29-4995-b0a3-e88aafad5672.png"  // Female cat
-    : "/lovable-uploads/2849d71e-b0b1-4fd0-95e6-10898124372b.png"; // Male cat
+    ? "/lovable-uploads/f30f5de4-ad57-4373-9e61-ae7bc0bb6b7e.png"  // Female cat
+    : "/lovable-uploads/a38b8e7b-a267-4de5-bca5-4e8d3a67a542.png"; // Male cat
 
   return (
     <div className={cn(

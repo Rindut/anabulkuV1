@@ -21,10 +21,10 @@ export const DogAvatar = ({
     xl: "h-48 w-48",
   };
 
-  // Use correct gender-specific dog avatar
+  // Use new gender-specific dog avatars
   const avatarSrc = gender === "Female"
-    ? "/lovable-uploads/5490fca1-cc3d-4041-b89f-9dd2d90be0ec.png"  // Female dog
-    : "/lovable-uploads/c22508c8-76e4-40a4-824b-6a4b629a00c4.png"; // Male dog
+    ? "/lovable-uploads/8ff221f5-6b20-42db-8af6-3efa83db08e4.png"  // Female dog
+    : "/lovable-uploads/6db4f94e-6f10-4087-bc7b-fc4184ee3857.png"; // Male dog
 
   return (
     <div className={cn(
