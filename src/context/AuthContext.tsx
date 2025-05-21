@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Session, User } from "@supabase/supabase-js";
+import { toast } from "@/hooks/use-toast";
 
 type AuthContextType = {
   session: Session | null;
@@ -28,109 +29,107 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Check if the user has completed onboarding and redirect accordingly
-  const checkOnboardingStatus = async (userId: string) => {
-    try {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("onboarding_completed")
-        .eq("id", userId)
-        .single();
-
-      if (error) {
-        console.error("Error checking onboarding status:", error);
-        return;
-      }
-
-      // If onboarding is not completed, redirect to onboarding flow
-      if (!data.onboarding_completed) {
-        navigate("/onboarding/welcome");
-      } else {
-        // If onboarding is completed, redirect to homepage
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Error in checkOnboardingStatus:", error);
-      // Default to onboarding if there's an error
-      navigate("/onboarding/welcome");
-    }
-  };
-
   useEffect(() => {
-    // Check active session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
-
-    // Listen for auth changes
+    // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null);
+      (event, currentSession) => {
+        console.log("Auth state changed:", event);
+        setSession(currentSession);
+        setUser(currentSession?.user ?? null);
         setLoading(false);
-
-        // If this is a new sign-in event, check onboarding status
-        if (event === 'SIGNED_IN' && session?.user) {
-          // Use setTimeout to avoid blocking the auth state change
-          setTimeout(() => {
-            checkOnboardingStatus(session.user.id);
-          }, 0);
-        }
       }
     );
+
+    // THEN check for existing session
+    supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
+      console.log("Initial session check:", currentSession ? "Found session" : "No session");
+      setSession(currentSession);
+      setUser(currentSession?.user ?? null);
+      setLoading(false);
+    });
 
     return () => subscription.unsubscribe();
   }, []);
 
   const signIn = async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    
-    if (!error && data?.session) {
-      // For password sign-in, let the onAuthStateChange handler above handle redirection
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      
+      if (error) throw error;
+      
+      return { data: data?.session, error: null };
+    } catch (error: any) {
+      console.error("Sign in error:", error);
+      toast({
+        title: "Sign in failed",
+        description: error.message || "There was an error signing in",
+        variant: "destructive",
+      });
+      return { data: null, error };
     }
-    
-    return { data: data?.session, error };
   };
 
   const signUp = async (email: string, password: string, userData: any) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: userData,
-      },
-    });
-    
-    if (!error && data?.session) {
-      // For new sign-ups, always go to onboarding
-      navigate('/onboarding/welcome');
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: userData,
+        },
+      });
+      
+      if (error) throw error;
+      
+      return { data, error: null };
+    } catch (error: any) {
+      console.error("Sign up error:", error);
+      toast({
+        title: "Sign up failed",
+        description: error.message || "There was an error signing up",
+        variant: "destructive",
+      });
+      return { data: { user: null, session: null }, error };
     }
-    
-    return { data, error };
   };
 
   const signInWithGoogle = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: window.location.origin,
-      }
-    });
-    
-    if (error) {
-      console.error("Error signing in with Google:", error);
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: window.location.origin,
+        }
+      });
+      
+      if (error) throw error;
+    } catch (error: any) {
+      console.error("Google sign in error:", error);
+      toast({
+        title: "Google sign in failed",
+        description: error.message || "There was an error signing in with Google",
+        variant: "destructive",
+      });
     }
-    // Redirection will be handled by the onAuthStateChange listener after successful auth
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
-    navigate('/signin');
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      
+      navigate('/signin');
+    } catch (error: any) {
+      console.error("Sign out error:", error);
+      toast({
+        title: "Sign out failed",
+        description: error.message || "There was an error signing out",
+        variant: "destructive",
+      });
+    }
   };
 
   const value = {

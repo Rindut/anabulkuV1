@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/context/AuthContext";
 import { toast } from "@/hooks/use-toast";
@@ -18,43 +18,61 @@ export type Profile = {
 export function useProfile() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
   const { user } = useAuth();
 
-  useEffect(() => {
-    if (user) {
-      fetchProfile();
-    }
-  }, [user]);
-
-  async function fetchProfile() {
+  const fetchProfile = useCallback(async () => {
     try {
       setLoading(true);
+      setError(null);
       
-      if (!user) return;
+      if (!user) {
+        setProfile(null);
+        return;
+      }
+      
+      console.log("Fetching profile for user ID:", user.id);
       
       const { data, error } = await supabase
         .from("profiles")
         .select("*")
         .eq("id", user.id)
-        .single();
+        .maybeSingle();
       
       if (error) {
+        console.error("Error fetching profile:", error);
         throw error;
       }
       
+      console.log("Profile fetch result:", data);
+      
       if (data) {
         setProfile(data);
+      } else {
+        console.log("No profile found for user ID:", user.id);
+        setProfile(null);
       }
-    } catch (error: any) {
+    } catch (err: any) {
+      console.error("Profile fetch error:", err);
+      setError(err);
       toast({
         title: "Error fetching profile",
-        description: error.message,
+        description: err.message || "Could not load your profile",
         variant: "destructive",
       });
     } finally {
       setLoading(false);
     }
-  }
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      fetchProfile();
+    } else {
+      setProfile(null);
+      setLoading(false);
+    }
+  }, [user, fetchProfile]);
 
   async function updateProfile(profileData: Partial<Profile>) {
     try {
@@ -70,7 +88,7 @@ export function useProfile() {
         throw error;
       }
 
-      if (data) {
+      if (data && data.length > 0) {
         setProfile(data[0]);
         return data[0];
       }
@@ -93,6 +111,7 @@ export function useProfile() {
   return {
     profile,
     loading,
+    error,
     fetchProfile,
     updateProfile,
     completeOnboarding,

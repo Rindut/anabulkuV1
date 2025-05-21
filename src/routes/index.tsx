@@ -3,6 +3,7 @@ import { Suspense, lazy } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/context/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
+import { AuthRedirect } from "@/components/AuthRedirect";
 
 // Layouts
 import { MainLayout } from "@/components/layout/MainLayout";
@@ -35,6 +36,7 @@ const PetDetails = lazy(() => import("@/pages/PetDetails"));
 export default function AppRoutes() {
   return (
     <AuthProvider>
+      <AuthRedirect />
       <Suspense fallback={
         <div className="flex h-screen w-full items-center justify-center">
           <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
