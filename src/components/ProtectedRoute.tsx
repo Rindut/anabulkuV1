@@ -15,7 +15,7 @@ export const ProtectedRoute = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     // Only perform the check if we have both user and profile data
-    if (!loading && !profileLoading && user && profile) {
+    if (!loading && !profileLoading) {
       setIsCheckingOnboarding(false);
     }
   }, [loading, profileLoading, user, profile]);

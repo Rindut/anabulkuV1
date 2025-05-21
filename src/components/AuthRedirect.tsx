@@ -10,10 +10,10 @@ export const AuthRedirect = () => {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    if (!authLoading && user && !profileLoading && profile) {
+    if (!authLoading && !profileLoading) {
       setIsReady(true);
     }
-  }, [user, authLoading, profile, profileLoading]);
+  }, [authLoading, profileLoading]);
 
   // Show loading state until we have all the information we need
   if (authLoading || (user && profileLoading) || !isReady) {
